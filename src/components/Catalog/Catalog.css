@@ -1,0 +1,15 @@
+.catalog {
+}
+.catalog-title {
+    padding: 22px;
+    text-align: center;
+}
+
+.catalog-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 30px;
+    gap: 30px;
+}
+
+
