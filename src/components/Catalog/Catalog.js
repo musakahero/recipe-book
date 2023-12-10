@@ -4,7 +4,7 @@ export const Catalog = (props) => {
 
     return (
         <div className="catalog">
-            <h1 className="catalog-title">All Recipies</h1>
+            <h1 className="catalog-title">All Recipes</h1>
             <div className="catalog-container">
                 <RecipeItem />
                 <RecipeItem />

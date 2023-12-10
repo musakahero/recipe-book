@@ -9,19 +9,26 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 20px;
+    column-gap: 20px;
     align-items: center;
     grid-template-areas:
     '. .'
     '. .'
-    '. .'
+    'ingredients-label ingredients-label'
+    'create-ingredients create-ingredients'
     'steps-label steps-label'
     'steps-area steps-area'
     'submit submit'
-    
 }
 
-.create-form .create-steps {
+.create-form textarea {
     font-size: 0.8em;
+    font-weight: 200;
+}
+
+.create-form input {
+    border-radius: 40px;
+    padding: 0px 20px;
     font-weight: 200;
 }
 
@@ -30,16 +37,19 @@
     grid-area: submit;
     margin-top: 20px;
 }
+.create-form .ingredients-label {
+    grid-area: ingredients-label
+}
+.create-form .create-ingredients {
+    grid-area: create-ingredients
+}
 .create-form .steps-label {
     grid-area: steps-label
 }
+
 .create-form .create-steps {
     grid-area: steps-area
 }
 
-.create-form input {
-    border-radius: 40px;
-    padding: 0px 20px;
-    font-weight: 200;
-}
+
 

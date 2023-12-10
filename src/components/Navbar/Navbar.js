@@ -7,7 +7,7 @@ export const Navbar = (props) => {
         <div className="container">
             <nav className="nav">
             <li className="nav-item"><Link to="/">LogoHome</Link></li>
-            <li className="nav-item"><Link to="/catalog">All recipies</Link></li>
+            <li className="nav-item"><Link to="/catalog">All recipes</Link></li>
             <li className="nav-item"><Link to="/create">Add new recipe</Link></li>
             <li className="nav-item"><Link to="/login">Login</Link></li>
             <li className="nav-item"><Link to="/register">Register</Link></li>
