@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Login.css";
 export const Login = (props) => {
 
@@ -14,7 +15,7 @@ export const Login = (props) => {
 
                 <button type="submit" className="btn login-submit">Sign in</button>
                 
-                <p className="not-registered">Not registered yet? Click <a href={'/register'}>here</a> to create an account.</p>
+                <p className="not-registered">Not registered yet? Click <Link to={'/register'}>here</Link> to create an account.</p>
             </form>
         </div>
     )

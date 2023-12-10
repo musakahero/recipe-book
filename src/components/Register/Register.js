@@ -1,4 +1,5 @@
 import "./Register.css";
+import {Link} from 'react-router-dom';
 export const Register = (props) => {
 
     return (
@@ -17,7 +18,7 @@ export const Register = (props) => {
 
                 <button type="submit" className="btn reg-submit">Register</button>
                 
-                <p className="already-reg">Already registered? Click <a href={'/register'}>here</a> to log into your account.</p>
+                <p className="already-reg">Already registered? Click <Link to={'/register'}>here</Link> to log into your account.</p>
             </form>
         </div>
     )
