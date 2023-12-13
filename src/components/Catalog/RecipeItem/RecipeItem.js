@@ -1,13 +1,21 @@
 import "./RecipeItem.css";
-export const RecipeItem = (props) => {
+import { Link } from "react-router-dom";
 
+export const RecipeItem = ({ _id, name, prepTime, ingredients, img }) => {
+
+    
     return (
-            <div className="recipe-item">
-                <div className="item-element img-container">
+        <Link to={`/catalog/${_id}`}><div className="recipe-item">
+            {/* Check if there's any img URL provided. If not, put a backup img div */}
+            {img !== '' ?
+                <div className="img-container" style={{ backgroundImage: `url(${img})` }}>
                 </div>
-                <p className="item-element item-title">Title</p>
-                <p className="item-element item-createdBy">Added by: Admin</p>
-                <p className="item-element item-prep-time">Preparation time: 30 minutes</p>
-            </div>
+                : <div className="img-container-backup"></div>
+            }
+            <p className="item-element item-name">{name}</p>
+            <p className="item-element item-prepTime">Preparation time: {prepTime}</p>
+            <p className="item-element item-ingredientsCount">Number of ingredients: {ingredients.length}</p>
+        </div></Link>
     )
 }
+

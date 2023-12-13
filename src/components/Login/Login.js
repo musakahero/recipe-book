@@ -5,7 +5,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
 export const Login = () => {
-    
     const { onLoginSubmit } = useContext(AuthContext);
 
     const {formValues, onChangeHandler, onSubmit} = useForm({
@@ -19,10 +18,10 @@ export const Login = () => {
 
             <form className="login-form" method="post" onSubmit={onSubmit}>
                 <label htmlFor="email">Email address</label>
-                <input className="login-email" name="email" type="email" onChange={onChangeHandler} value={formValues['email']}/>
+                <input className="login-email" name="email" type="email" onChange={onChangeHandler} value={formValues.email}/>
 
                 <label htmlFor="password">Password</label>
-                <input className="login-password" name="password" type="password" onChange={onChangeHandler} value={formValues['password']} />
+                <input className="login-password" name="password" type="password" onChange={onChangeHandler} value={formValues.password} />
 
                 <button type="submit" className="btn login-submit">Sign in</button>
 

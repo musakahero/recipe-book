@@ -25,7 +25,6 @@ export const getOne = async (recipeId) => {
 // };
 
 export const edit = async (data, token) => {
-    console.log(data._id);
     //const result = await request.post(`${baseUrl}/recipes/${data._id}`, data, token);
     //return result;
 }

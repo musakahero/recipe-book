@@ -1,0 +1,66 @@
+/*  nice red: #D11B3F;
+    nice blue: #306DBE;
+    nice yellow: #F5CD56;
+*/
+
+.details {
+    background-color: lightgrey;
+}
+
+.details-container {
+    background-color: #F5CD56;
+    margin: 5rem 10rem;
+    padding: 1rem 2rem 2rem 2rem;
+    border-radius: 20px;
+    display: grid;
+    height: 80vh;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: 1fr 5fr 5fr;
+    grid-template-areas:
+        'title title'
+        'img summary'
+        'img .'
+}
+
+.details-title {
+    text-align: center;
+    grid-area: title;
+    padding-bottom: 1rem;
+}
+
+.details-summary {
+    grid-area: summary;
+    margin: 0rem 4rem 1rem 4rem;
+    font-weight: 300;
+}
+
+.details-summary-prepTime {
+    margin-bottom: 1rem;
+}
+
+.details-steps {
+    background-color: #306DBE;
+    margin: 0rem 4rem 0 4rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.details-img-container {
+    grid-area: img;
+    background-size: cover;
+    /* border-radius: 20px 0px 0px 20px; */
+}
+
+.details-img-container-backup {
+    background-image: url('../../images/missing-photo.jpg');
+    background-size: 'contain';
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    grid-area: img;
+    border-radius: 20px 20px 20px 20px;
+}
+
+

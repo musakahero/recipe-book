@@ -1,7 +1,8 @@
-export const request = async (method, url, data, token) => {
+export const request = async (method, url, data, token, isLogout) => {
     const options = {};
 
-    if (method !== 'GET') {
+    //isLogout defines whether body is required for the GET request
+    if (method !== 'GET' || isLogout) {
         options.method = method;
         options.headers = {};
 
@@ -14,20 +15,25 @@ export const request = async (method, url, data, token) => {
             options.headers['X-Authorization'] = token
         };
     }
-    console.log(`Options currently are: ${options}`);
-    const response = await fetch(url, options);
 
+    const response = await fetch(url, options);
     if (response.status === 204) {
         return {};
     }
+    
+    // if(isLogout && !response.ok) {
+    //     throw Error('Invalid page.');
+    // }
 
     const result = await response.json();
 
+    //return result only if response code is OK
     if (!response.ok) {
-        throw result;
-    };
-
-    return result;
+        //thrown Error is caught in the onLoginSubmit try-catch.
+        throw Error('Invalid username or password!');
+    } else {
+        return result;
+    }
 }
 
 export const get = request.bind(null, 'GET');

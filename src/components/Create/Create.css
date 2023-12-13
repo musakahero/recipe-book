@@ -4,7 +4,6 @@
 }
 
 .create-form {
-    
     padding: 50px 33%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -14,10 +13,11 @@
     grid-template-areas:
     '. .'
     '. .'
+    '. .'
     'ingredients-label ingredients-label'
-    'create-ingredients create-ingredients'
+    'ingredients ingredients'
     'steps-label steps-label'
-    'steps-area steps-area'
+    'steps steps'
     'submit submit'
 }
 
@@ -41,14 +41,14 @@
     grid-area: ingredients-label
 }
 .create-form .create-ingredients {
-    grid-area: create-ingredients
+    grid-area: ingredients
 }
 .create-form .steps-label {
     grid-area: steps-label
 }
 
 .create-form .create-steps {
-    grid-area: steps-area
+    grid-area: steps
 }
 
 

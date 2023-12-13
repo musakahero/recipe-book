@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
-export const Register = (props) => {
+export const Register = () => {
     const { onRegisterSubmit } = useContext(AuthContext);
 
     const {formValues, onChangeHandler, onSubmit} = useForm({
@@ -19,9 +19,9 @@ export const Register = (props) => {
 
             <form className="reg-form" method="post" onSubmit={onSubmit}>
                 <label htmlFor="email">Email address</label>
-                <input className="reg-email" onChange={onChangeHandler} name="reg-email" type="email" value={formValues.email}/>
+                <input className="reg-email" onChange={onChangeHandler} name="email" type="email" value={formValues.email}/>
 
-                <label htmlFor="reg-password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input className="reg-password" name="password" type="password" onChange={onChangeHandler} value={formValues.password}/> 
 
                 <label  htmlFor="repeat">Confirm password</label>
@@ -29,7 +29,7 @@ export const Register = (props) => {
 
                 <button type="submit" className="btn reg-submit">Register</button>
                 
-                <p className="already-reg">Already registered? Click <Link to={'/register'}>here</Link> to log into your account.</p>
+                <p className="already-reg">Already registered? Click <Link to={'/login'}>here</Link> to log into your account.</p>
             </form>
         </div>
     )

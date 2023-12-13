@@ -10,33 +10,36 @@ export const Navbar = (props) => {
 
     const onUserPanelClick = () => {
         setUserPanelClicked(!userPanelClicked);
+        console.log(userPanelClicked);
     };
 
     return (
-        <nav className="nav">
-            <span className="logo"><Link to="/">LogoHome</Link></span>
-            <ul className="menu">
+        <>
+            <nav className="nav">
+                <li className="nav-item"><Link to="/">LogoHome</Link></li>
                 <li className="nav-item"><Link to="/catalog">All recipes</Link></li>
-                {isAuthenticated() ? (<>
+                {true ? (<>
                     <li className="nav-item"><Link to="/create">Add new recipe</Link></li>
-                    <li className="userPanel nav-item" onClick={onUserPanelClick}>Welcome, {userEmail}
-                        {userPanelClicked ?
-                        <ul className="userPanel-dropdown">
-                            <li className="userPanel-content">My Profile
-                            </li>
-                            <li className="userPanel-content"> <Link to="/logout">Log Out</Link>
-                            </li>
-                        </ul>
-                         : null} 
-                    </li>
+                    <li className="nav-item" onClick={onUserPanelClick}><span>Welcome, {userEmail}</span></li>
                     {/* <li className="nav-item"><Link to="logout">Logout</Link></li> */}
                 </>)
                     : (<>
                         <li className="nav-item"><Link to="/login">Login</Link></li>
                         <li className="nav-item"><Link to="/register">Register</Link></li>
                     </>)}
-            </ul>
-        </nav>
+
+            </nav>
+            {userPanelClicked ?
+                <div className="userPanel">
+                    <div className="userPanel-content">logout?
+                    </div>
+                    <div className="userPanel-content">logout?
+                    </div>
+                    <div className="userPanel-content">logout?
+                    </div>
+                </div>
+                : null}
+        </>
     );
 };
 
