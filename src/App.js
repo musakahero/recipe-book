@@ -9,7 +9,6 @@ import { Register } from './components/Register/Register';
 import { Home } from './components/Home/Home';
 import * as recipeService from './services/recipeService';
 import * as authService from './services/authService';
-import * as commentService from './services/commentService'
 import { AuthContext } from './contexts/AuthContext';
 import { RecipeContext } from './contexts/RecipeContext';
 import { Logout } from './components/Logout/Logout';

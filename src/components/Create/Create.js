@@ -37,7 +37,7 @@ export const Create = () => {
                 <label  className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
                 <textarea className={styles["create-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} />
 
-                <button type="submit" className={styles["btn create-submit"]}>Add Recipe</button>
+                <button type="submit" className={`${styles["btn"]} ${styles["create-submit"]}` }>Add Recipe</button>
             </form>
         </div>
     )

@@ -27,9 +27,9 @@ export const Register = () => {
                 <label  htmlFor="repeat">Confirm password</label>
                 <input className={styles["reg-repeat"]}  name="repeat" type="password" onChange={onChangeHandler} value={formValues.repeat}/>       
 
-                <button type="submit" className={styles["btn reg-submit"]} >Register</button>
+                <button type="submit" className={`${styles["btn"]} ${styles["reg-submit"]}`} >Register</button>
                 
-                <p className={styles["already-reg"]} >Already registered? Click <Link to={'/login'}>here</Link> to log into your account.</p>
+                <p className={styles["already-reg"]} >Already registered? Click <Link className={styles["here-btn"]} to={'/login'}>here</Link> to log into your account.</p>
             </form>
         </div>
     )

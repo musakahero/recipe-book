@@ -25,7 +25,7 @@ export const Login = () => {
 
                 <button type="submit" className={`${styles["btn"]} ${styles["login-submit"]}`}>Sign in</button>
 
-                <p className={styles["not-registered"]}>Not registered yet? Click <Link to={'/register'}>here</Link> to create an account.</p>
+                <p className={styles["not-registered"]}>Not registered yet? Click <Link className={styles["here-btn"]} to={'/register'}>here</Link> to create an account.</p>
             </form>
         </div>
     )
