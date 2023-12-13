@@ -19,17 +19,19 @@ export const getOne = async (recipeId) => {
     return result;
 }
 
-// export const addComment = async (itemId, data, token) => {
-//     const result = await request.post(`${baseUrl}/${recipeId}/comments`, data, token);
-//     return result;
-// };
-
-export const edit = async (data, token) => {
-    //const result = await request.post(`${baseUrl}/recipes/${data._id}`, data, token);
-    //return result;
+export const edit = async (recipeId, data, token) => {
+    const result = await request.put(`${baseUrl}/${recipeId}`, data, token);
+    return result;
 }
 
 export const deleteItem = async (recipeId, token) => {
     const result = await request.del(`${baseUrl}/${recipeId}`, {}, token);
     return result;
+};
+
+export const getOwned = async (userId) => {
+    const searchQuery = encodeURIComponent(`_ownerId="${userId}"`);
+    // const relationQuery = encodeURIComponent(`author=_ownerId:users`);
+    const result = await request.get(`${baseUrl}?where=${searchQuery}`);
+    return Object.values(result);
 };

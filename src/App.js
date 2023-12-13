@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Catalog } from './components/Catalog/Catalog';
@@ -14,6 +14,9 @@ import { AuthContext } from './contexts/AuthContext';
 import { RecipeContext } from './contexts/RecipeContext';
 import { Logout } from './components/Logout/Logout';
 import { RecipeDetails } from './components/RecipeDetails/RecipeDetails';
+import { Edit } from './components/Edit/Edit';
+import { Delete } from './components/Delete/Delete';
+import { MyProfile } from './components/My Profile/MyProfile';
 
 function App() {
   const navigate = useNavigate();
@@ -54,11 +57,7 @@ function App() {
   }
 
   // TODO:
-  const onEditSubmit = async (formValues) => {
-    const result = await recipeService.edit(formValues._id, formValues);
-    // TODO: null?
-    setRecipes(state => state.map(x => x._id === formValues._id ? result : null));
-  }
+
 
   const onLoginSubmit = async (formValues) => {
     try {
@@ -122,16 +121,16 @@ function App() {
   }
 
   const recipeContextObj = {
-    recipes, onCreateSubmit
+    recipes, onCreateSubmit, setRecipes
   }
 
 
   return (
     <RecipeContext.Provider value={recipeContextObj}>
       <AuthContext.Provider value={authContextObj}>
-        <div className="App">
+        <div className={styles["App"]}>
           <Navbar />
-          <main className='main'>
+          <main className={styles["main"]}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/catalog' element={<Catalog recipes={recipes} />} />
@@ -140,7 +139,9 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/logout' element={<Logout />} />
               <Route path='/catalog/:recipeId' element={<RecipeDetails />} />
-              {/* <Route path='/catalog/:gameId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} /> */}
+              <Route path='/edit/:recipeId' element={<Edit />} />
+              <Route path='/delete/:recipeId' element={<Delete />} />
+              <Route path='/profile/:userId' element={<MyProfile />} />
               <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
             </Routes>
           </main>

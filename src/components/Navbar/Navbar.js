@@ -1,39 +1,42 @@
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 import { Link } from 'react-router-dom';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
-export const Navbar = (props) => {
+export const Navbar = () => {
 
     const [userPanelClicked, setUserPanelClicked] = useState(false)
-    const { isAuthenticated, onLogoutClick, userEmail } = useContext(AuthContext);
+    const { isAuthenticated, onLogoutClick, username, userId } = useContext(AuthContext);
 
     const onUserPanelClick = () => {
         setUserPanelClicked(!userPanelClicked);
     };
 
     return (
-        <nav className="nav">
-            <span className="logo"><Link to="/">LogoHome</Link></span>
-            <ul className="menu">
-                <li className="nav-item"><Link to="/catalog">All recipes</Link></li>
+        <nav className={styles["nav"]}>
+            <Link to="/"><span className={styles["logo"]}>
+                {/* <i className={`${styles["fa-solid"]} ${styles["fa-pepper-hot"]}`}></i> */}
+                Home
+                </span></Link>
+            <ul className={styles["menu"]}>
+            <Link to="/catalog"><li className={styles["nav-item"]}>All recipes</li></Link>
                 {isAuthenticated() ? (<>
-                    <li className="nav-item"><Link to="/create">Add new recipe</Link></li>
-                    <li className="userPanel nav-item" onClick={onUserPanelClick}>Welcome, {userEmail}
+                    <Link to="/create"><li className={styles["nav-item"]}>Add new recipe</li></Link>
+                    <li className={`${styles["userPanel"]} ${styles["nav-item"]}`} onClick={onUserPanelClick}>Welcome, {username}
                         {userPanelClicked ?
-                        <ul className="userPanel-dropdown">
-                            <li className="userPanel-content">My Profile
-                            </li>
-                            <li className="userPanel-content"> <Link to="/logout">Log Out</Link>
-                            </li>
+                        <ul className={styles["userPanel-dropdown"]}>
+                            <Link to={`/profile/${userId}`}><li className={styles["userPanel-content"]}>My Profile
+                            </li></Link>
+                            <Link to="/logout"><li className={styles["userPanel-content"]}>Log Out
+                            </li></Link>
                         </ul>
                          : null} 
                     </li>
                     {/* <li className="nav-item"><Link to="logout">Logout</Link></li> */}
                 </>)
                     : (<>
-                        <li className="nav-item"><Link to="/login">Login</Link></li>
-                        <li className="nav-item"><Link to="/register">Register</Link></li>
+                        <Link to="/login"><li className={styles["nav-item"]}>Login</li></Link>
+                        <Link to="/register"><li className={styles["nav-item"]}>Register</li></Link>
                     </>)}
             </ul>
         </nav>

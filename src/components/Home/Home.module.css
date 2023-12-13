@@ -1,0 +1,24 @@
+
+.home-img-container {
+    height: 90vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 40% 40%;
+    background-image: url('../../images/cooking.jpg');
+}
+
+.home-start-btn {
+    font-size: 3rem;
+    background-color: #F5CD56;
+    border-radius: 20px;
+    padding: 1rem;
+    position: absolute;
+    top: 25rem;
+    right: 10rem;
+}
+
+.home-start-btn:hover {
+    background-color: #f3dc99;
+    scale: 1.1;
+}

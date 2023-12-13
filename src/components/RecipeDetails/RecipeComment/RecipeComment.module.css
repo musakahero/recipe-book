@@ -1,0 +1,24 @@
+.comment-container {
+    background-color: lightgrey;
+    padding: 1rem;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+};
+
+
+.comment-controls {
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    grid-area: edit;
+    align-items: flex-end;
+    margin: 0 1rem;
+}
+
+.comment-controls .comment-button{
+    background-color: #306DBE;
+    margin: 5px 0;
+    padding: 4px;
+    border-radius: 2px;
+}

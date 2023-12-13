@@ -1,0 +1,55 @@
+.edit-title {
+    padding: 22px;
+    text-align: center;
+}
+
+.edit-form {
+    padding: 50px 33%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+    align-items: center;
+    grid-template-areas:
+    '. .'
+    '. .'
+    '. .'
+    'edit-ingredients-label edit-ingredients-label'
+    'edit-ingredients edit-ingredients'
+    'edit-steps-label edit-steps-label'
+    'edit-steps edit-steps'
+    'edit-submit edit-submit'
+}
+
+.edit-form textarea {
+    font-size: 0.8em;
+    font-weight: 200;
+}
+
+.edit-form input {
+    border-radius: 40px;
+    padding: 0px 20px;
+    font-weight: 200;
+}
+
+/* Grid area naming */
+.edit-form .edit-submit {
+    grid-area: edit-submit;
+    margin-top: 20px;
+}
+.edit-form .ingredients-label {
+    grid-area: edit-ingredients-label
+}
+.edit-form .edit-ingredients {
+    grid-area: edit-ingredients
+}
+.edit-form .steps-label {
+    grid-area: edit-steps-label
+}
+
+.edit-form .edit-steps {
+    grid-area: edit-steps
+}
+
+
+
