@@ -8,15 +8,17 @@
   font-weight: 600;
   font-size: x-large;
   color: black;
- height: 100vh;
- overflow: auto;
+  height: 100vh;
+  overflow: auto;
 }
+
 a {
   color: black;
   text-decoration: none;
 }
+
 body {
-  background-color:lightgray;
+  background-color: lightgray;
 }
 
 /* compensate for fixed navbar */

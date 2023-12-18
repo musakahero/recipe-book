@@ -115,13 +115,13 @@
     margin: 0 1rem;
 }
 
-.controls .details-button{
+.details-controls .details-button{
     background-color: #306DBE;
     margin: 5px 0;
     padding: 4px;
     border-radius: 2px;
 }
 
-.controls details.button:hover {
+.details-controls details.button:hover {
     background-color: #8099bb;
 }

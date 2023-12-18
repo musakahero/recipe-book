@@ -8,17 +8,19 @@
 
 
 .comment-controls {
-    /* background-color: aqua; */
-    display: flex;
+    background-color: aqua;
+    color: red;
+    /* display: flex;
     flex-direction: column;
-    grid-area: edit;
     align-items: flex-end;
-    margin: 0 1rem;
+    margin: 0 1rem; */
 }
 
-.comment-controls .comment-button{
+
+.comment-container .comment-controls .comment-button{
     background-color: #306DBE;
-    margin: 5px 0;
+    margin: 5px 5px;
     padding: 4px;
     border-radius: 2px;
 }
+

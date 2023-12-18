@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import styles from './RecipeComment.module.css';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 
 export const RecipeComment = ({ _ownerId, content, username, _id }) => {
@@ -12,8 +12,8 @@ export const RecipeComment = ({ _ownerId, content, username, _id }) => {
             <div className={styles["comment-controls"]}>
                 {userId === _ownerId ? 
                 <>
-                    <Link className={styles["comment-button"]}>Delete</Link>
-                    <Link className={styles["comment-button"]}>Edit</Link>
+                    <Link ><span className={styles["comment-button"]}>Delete</span></Link>
+                    <Link ><span className={styles["comment-button"]}>Edit</span></Link>
                 </> 
                 : null}
             </div>

@@ -39,22 +39,22 @@ export const RecipeDetails = () => {
                 setComments(comments);
             })
     }, [recipeId]);
-    
+
     return (
         <div className={styles["details"]}>
             <div className={styles["details-container"]} >
                 <h1 className={styles["details-title"]} >{details.name}</h1>
                 <div className={styles["details-controls"]} >
-                    {isAuthenticated() && userId === details._ownerId ? 
-                    <>
-                        <Link className={styles["details-button"]}  to={`/edit/${recipeId}`}>Edit</Link>
-                        <Link className={styles["details-button"]}  to={`/delete/${recipeId}`} >Delete</Link>
-                    </> : null}
+                    {isAuthenticated() && userId === details._ownerId ?
+                        <>
+                            <Link className={styles["details-button"]} to={`/edit/${recipeId}`}>Edit</Link>
+                            <Link className={styles["details-button"]} to={`/delete/${recipeId}`} >Delete</Link>
+                        </> : null}
 
                 </div>
                 {/* Check if there's any img URL provided. If not, put a backup img div */}
                 {details.img !== '' ?
-                    <div className={styles["details-img-container"]}  style={{ backgroundImage: `url(${details.img})` }}>
+                    <div className={styles["details-img-container"]} style={{ backgroundImage: `url(${details.img})` }}>
                     </div>
                     : <div className={styles["details-img-container-backup"]} ></div>
                 }
@@ -75,9 +75,9 @@ export const RecipeDetails = () => {
 
             {/* Comment Form */}
             {isAuthenticated() ?
-                <form method="post" className={styles["comment-form"]}  onSubmit={onSubmit}>
+                <form method="post" className={styles["comment-form"]} onSubmit={onSubmit}>
                     <label htmlFor="content">Add new comment:</label>
-                    <textarea className={styles["comment-content"]}  type="text" cols={30} rows={3} name="content" value={formValues.content} onChange={onChangeHandler} />
+                    <textarea className={styles["comment-content"]} type="text" cols={30} rows={3} name="content" value={formValues.content} onChange={onChangeHandler} />
                     <button type="submit" className={`${styles["btn"]} ${styles["comment-submit"]}`}>Post comment</button>
                 </form>
                 : null}
