@@ -20,7 +20,12 @@ export const createComment = async (recipeId, content, username, token) => {
     return result;
 };
 
-export const editComment = async (commentId, content, token) => {
-    const result = await request.put(`${baseUrl}/${commentId}`, content, token);
+export const editComment = async (commentId, recipeId, content, username, token) => {
+    const result = await request.put(`${baseUrl}/${commentId}`, {recipeId, content, username }, token);
+    return result;
+}
+
+export const deleteComment = async (commentId, token) => {
+    const result = await request.del(`${baseUrl}/${commentId}`, {}, token);
     return result;
 }

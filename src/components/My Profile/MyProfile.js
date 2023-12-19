@@ -1,8 +1,7 @@
 import styles from './MyProfile.module.css';
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as recipeService from '../../services/recipeService';
-// import { RecipeItem } from '../Catalog/RecipeItem/RecipeItem';
 import { ProfileRecipeItem } from './ProfileRecipeItem/ProfileRecipeItem';
 
 export const MyProfile = () => {

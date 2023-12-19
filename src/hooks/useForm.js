@@ -28,6 +28,8 @@ export const useForm = (initialValues, onSubmitHandler) => {
     const onSubmit = (e) => {
         e.preventDefault();
         onSubmitHandler(formValues);
+        console.log('formValues are ', formValues);
+
     }
 
     const changeValues = (newValues) => {

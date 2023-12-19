@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import * as recipeService from '../../services/recipeService';
-import { useForm } from "../../hooks/useForm";
-import { AuthContext } from "../../contexts/AuthContext";
-import { RecipeContext } from "../../contexts/RecipeContext";
 import styles from './Edit.module.css';
+import { useContext, useEffect, useState } from "react"
+import { useParams} from "react-router-dom"
+import { useForm } from "../../hooks/useForm";
+import * as recipeService from '../../services/recipeService';
+import { RecipeContext } from "../../contexts/RecipeContext";
 
 export const Edit = () => {
     const { recipeId } = useParams();
@@ -23,6 +22,7 @@ export const Edit = () => {
     useEffect(() => {
         recipeService.getOne(recipeId)
             .then(result => {
+                //changeValues updates the initialValues for the useForm hook
                 changeValues(result);
 
             });
