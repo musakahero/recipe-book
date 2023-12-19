@@ -6,11 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 export const Navbar = () => {
 
     const [userPanelClicked, setUserPanelClicked] = useState(false);
-    const { isAuthenticated, onLogoutClick, username, userId } = useContext(AuthContext);
-
-    const onUserPanelClick = () => {
-        setUserPanelClicked(!userPanelClicked);
-    };
+    const { isAuthenticated, username, userId } = useContext(AuthContext);
 
     return (
         <nav className={styles["nav"]}>
@@ -21,7 +17,7 @@ export const Navbar = () => {
                 {isAuthenticated() ?
                     (<>
                         <Link to="/create"><li className={styles["nav-item"]}>Add new recipe</li></Link>
-                        <li className={`${styles["userPanel"]} ${styles["nav-item"]}`} onClick={onUserPanelClick}>Welcome, {username}
+                        <li className={`${styles["userPanel"]} ${styles["nav-item"]}`} onClick={() => {setUserPanelClicked(!userPanelClicked)}}>Welcome, {username}
                         {/* Drop-down functionality */}
                             {userPanelClicked &&
                                 <ul className={styles["userPanel-dropdown"]}>

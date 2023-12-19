@@ -7,3 +7,9 @@
     border-radius: 20px;
 }
 
+.catalog .catalog-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 30px;
+    gap: 30px;
+}

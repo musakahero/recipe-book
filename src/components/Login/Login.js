@@ -18,10 +18,10 @@ export const Login = () => {
 
             <form className={styles["login-form"]} method="post" onSubmit={onSubmit}>
                 <label htmlFor="email">Email address</label>
-                <input className={styles["login-email"]} name="email" type="email" onChange={onChangeHandler} value={formValues.email}/>
-
+                <input className={styles["login-email"]} name="email" type="email" onChange={onChangeHandler} value={formValues.email} required/>
+                
                 <label htmlFor="password">Password</label>
-                <input className={styles["login-password"]} name="password" type="password" onChange={onChangeHandler} value={formValues.password} />
+                <input className={styles["login-password"]} name="password" type="password" onChange={onChangeHandler} value={formValues.password} required/>
 
                 <button type="submit" className={`${styles["btn"]} ${styles["login-submit"]}`}>Sign in</button>
 

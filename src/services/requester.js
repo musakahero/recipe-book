@@ -20,10 +20,6 @@ export const request = async (method, url, data, token, isLogout) => {
     if (response.status === 204) {
         return {};
     }
-    
-    // if(isLogout && !response.ok) {
-    //     throw Error('Invalid page.');
-    // }
 
     const result = await response.json();
 

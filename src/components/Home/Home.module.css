@@ -1,8 +1,8 @@
 
 .home-img-container {
-    position:fixed;
+    z-index: 0;
     overflow: hidden;
-    height: 95vh;
+    height: 90vh;
     width: 100vw;
     background-size: cover;
     background-repeat: no-repeat;

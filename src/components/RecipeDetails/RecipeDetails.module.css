@@ -99,7 +99,7 @@
 .comment-form .comment-submit {
     border-radius: 30px;
     width: 20rem;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .no-comments {

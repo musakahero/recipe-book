@@ -16,6 +16,7 @@ import { RecipeDetails } from './components/RecipeDetails/RecipeDetails';
 import { Edit } from './components/Edit/Edit';
 import { Delete } from './components/Delete/Delete';
 import { MyProfile } from './components/My Profile/MyProfile';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function App() {
       navigate('/catalog');
 
     } catch (err) {
-      alert(err);
+      alert(err.message);
     }
   }
 
@@ -108,7 +109,7 @@ function App() {
       };
       //post request
       const result = await authService.register(registerData);
-
+      console.log(result);
       //update Auth state
       setAuth(result);
       navigate('/catalog');
@@ -127,7 +128,6 @@ function App() {
     } catch (err) {
       alert(err.message);
     }
-
   }
 
   //Context objects
@@ -172,6 +172,7 @@ function App() {
               <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
             </Routes>
           </main>
+          <Footer/>
         </div>
       </AuthContext.Provider>
     </RecipeContext.Provider>

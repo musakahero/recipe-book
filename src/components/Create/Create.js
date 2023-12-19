@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./Create.module.css";
 import { useForm } from "../../hooks/useForm";
 import { useContext } from "react";
@@ -23,19 +22,19 @@ export const Create = () => {
             <form className={styles["create-form"]} method="post" onSubmit={onSubmit}>
 
                 <label htmlFor="name">Recipe name*</label>
-                <input className={styles["create-name"]} name="name" type="text" onChange={onChangeHandler} value={formValues.name} />
+                <input className={styles["create-name"]} name="name" type="text" onChange={onChangeHandler} value={formValues.name} required/>
 
                 <label htmlFor="img">Recipe photo</label>
                 <input className={styles["create-img"]} name="img" type="url" onChange={onChangeHandler} value={formValues.img} />
 
                 <label htmlFor="prepTime">Preparation time*</label>
-                <input className={styles["create-prep-time"]} name="prepTime" type="text" onChange={onChangeHandler} value={formValues.prepTime} />
+                <input className={styles["create-prep-time"]} name="prepTime" type="text" onChange={onChangeHandler} value={formValues.prepTime} required/>
 
                 <label className={styles["ingredients-label"]} htmlFor="ingredients">Ingredients (separated by comma)*</label>
-                <textarea rows={5} cols={40} className={styles["create-ingredients"]} name="ingredients" type="text" onChange={onChangeHandler} value={formValues.ingredients} />
+                <textarea rows={5} cols={40} className={styles["create-ingredients"]} name="ingredients" type="text" onChange={onChangeHandler} value={formValues.ingredients} required/>
 
                 <label  className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
-                <textarea className={styles["create-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} />
+                <textarea className={styles["create-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} required/>
 
                 <button type="submit" className={`${styles["btn"]} ${styles["create-submit"]}` }>Add Recipe</button>
             </form>

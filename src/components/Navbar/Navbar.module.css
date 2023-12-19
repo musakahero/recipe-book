@@ -1,6 +1,6 @@
-/*  nice red: #D11B3F;
-    nice blue: #306DBE;
-    nice yellow: #F5CD56;
+/*   red: #D11B3F;
+     blue: #306DBE;
+     yellow: #F5CD56;
 */
 .nav {
     position: fixed;
@@ -37,8 +37,9 @@
     cursor: pointer;
 }
 
-.nav .menu .userPanel-dropdown {
+.nav .menu  .userPanel .userPanel-dropdown {
     position: absolute;
+    z-index: 99;
     top: 3.15rem;
     left: 0rem;
     background-color: #F5CD56;
