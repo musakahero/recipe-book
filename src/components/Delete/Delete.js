@@ -15,8 +15,13 @@ useEffect( () => {
 }, []);
 
 const onDeleteClick = async () => {
-    const result = await recipeService.deleteItem(recipeId, token);
+    try {
+        await recipeService.deleteItem(recipeId, token);
     setRecipes(state => state.filter(x => x._id !== recipeId));
+    } catch (err) {
+        alert(`Deletion failed: ${err.message}`);
+    }
+    
 }
     return <Navigate to="/catalog" />
 }

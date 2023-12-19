@@ -3,26 +3,15 @@ import { useParams, useNavigate } from "react-router-dom"
 import * as recipeService from '../../services/recipeService';
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
+import { RecipeContext } from "../../contexts/RecipeContext";
 import styles from './Edit.module.css';
 
 export const Edit = () => {
-
-    const navigate = useNavigate();
     const { recipeId } = useParams();
-    const [recipe, setRecipe] = useState();
-    const { token } = useContext(AuthContext);
-
-    //Edit handler
-    const onEditSubmit = async (formValues) => {
-        const result = await recipeService.edit(recipeId, formValues, token);
-        
-        //TODO: STATE UPDATE
-        navigate(`/catalog/${recipeId}`);
-        // TODO: null?
-        // setRecipe(state => state.map(x => x._id === formValues._id ? result : null));
-    }
+    const { onEditSubmit } = useContext(RecipeContext);
 
     const { formValues, onChangeHandler, onSubmit, changeValues } = useForm({
+        _id: '',
         name: '',
         img: '',
         prepTime: '',
@@ -35,12 +24,13 @@ export const Edit = () => {
         recipeService.getOne(recipeId)
             .then(result => {
                 changeValues(result);
+
             });
     }, [recipeId]);
 
     return (
         <div className={styles["edit-container"]}>
-            <h1 className={styles["edit-title"]}>Post a recipe</h1>
+            <h1 className={styles["edit-title"]}>Edit recipe</h1>
 
             <form className={styles["edit-form"]} method="post" onSubmit={onSubmit}>
 
@@ -56,10 +46,10 @@ export const Edit = () => {
                 <label className={styles["ingredients-label"]} htmlFor="ingredients">Ingredients (separated by comma)*</label>
                 <textarea rows={5} cols={40} className={styles["edit-ingredients"]} name="ingredients" type="text" onChange={onChangeHandler} value={formValues.ingredients} />
 
-                <label  className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
+                <label className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
                 <textarea className={styles["edit-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} />
 
-                <button type="submit" className={`${styles["btn"]} ${styles["edit-submit"]}` }>Add Recipe</button>
+                <button type="submit" className={`${styles["btn"]} ${styles["edit-submit"]}`}>Edit Recipe</button>
             </form>
         </div>
     )

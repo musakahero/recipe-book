@@ -10,7 +10,17 @@ export const getAllComments = async (recipeId) => {
     return Object.values(result);
 };
 
+export const getOneComment = async (commentId) => {
+    const result = await request.get(`${baseUrl}/${commentId}`);
+    return result;
+}
+
 export const createComment = async (recipeId, content, username, token) => {
     const result = await request.post(baseUrl, { recipeId, content, username }, token);
     return result;
 };
+
+export const editComment = async (commentId, content, token) => {
+    const result = await request.put(`${baseUrl}/${commentId}`, content, token);
+    return result;
+}

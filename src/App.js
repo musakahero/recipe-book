@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Catalog } from './components/Catalog/Catalog';
 import { Create } from './components/Create/Create';
@@ -30,19 +30,20 @@ function App() {
   }, []);
 
 
+  //Operation handlers
   const onCreateSubmit = async (formValues) => {
     try {
       //validation - check if empty strings in mandatory fields only
       for (const field in formValues) {
-        if (formValues[field].trim() === '' && field !== 'img') {
+        if (formValues[field] == false && field !== 'img') {
           throw Error('All mandatory fields must be filled.');
         }
       };
 
-      //split ingredients and remove whitespaces
+      //split ingredients and remove whitespaces 
       formValues.ingredients = formValues.ingredients.split(',')
-      .map(x => x.trim())
-      .filter(x => x != false);
+        .map(x => x.trim())
+        .filter(x => x != false);
 
       //post request
       const newRecipe = await recipeService.create(formValues, auth.accessToken);
@@ -55,8 +56,33 @@ function App() {
     }
   }
 
-  // TODO:
+  const onEditSubmit = async (formValues) => {
+    try {
+      //validation - check if empty strings in mandatory fields only
+      for (const field in formValues) {
+        if (formValues[field] == false && field !== 'img') {
+          throw Error('All mandatory fields must be filled.');
+        }
+      };
 
+      //split ingredients and remove whitespaces if string (array changes to string every time the field is edited)
+      if (typeof (formValues.ingredients) === 'string') {
+        formValues.ingredients = formValues.ingredients.split(',')
+          .map(x => x.trim())
+          .filter(x => x != false);
+      }
+
+      //put request
+      const result = await recipeService.edit(formValues._id, formValues, auth.accessToken);
+
+      //update Recipes state
+      setRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
+      navigate(`/catalog/${formValues._id}`);
+
+    } catch (err) {
+      alert(err.message);
+    }
+  }
 
   const onLoginSubmit = async (formValues) => {
     try {
@@ -104,7 +130,6 @@ function App() {
 
   }
 
-  
   //Context objects
   const authContextObj = {
     onLoginSubmit,
@@ -120,7 +145,10 @@ function App() {
   }
 
   const recipeContextObj = {
-    recipes, onCreateSubmit, setRecipes
+    recipes,
+    setRecipes,
+    onCreateSubmit,
+    onEditSubmit,
   }
 
 

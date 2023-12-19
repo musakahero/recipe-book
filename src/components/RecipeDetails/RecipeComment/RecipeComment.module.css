@@ -4,23 +4,41 @@
     border-radius: 20px;
     display: grid;
     grid-template-columns: 3fr 1fr;
-};
-
-
-.comment-controls {
-    background-color: aqua;
-    color: red;
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0 1rem; */
+    grid-template-areas: 
+    'owner controls'
+    'body controls'
+    '. .'
 }
 
+/* grid areas */
+.comment-controls {
+    grid-area: controls;
+}
+.comment-owner {
+    grid-area: owner;
+}
 
-.comment-container .comment-controls .comment-button{
+.comment-body {
+    grid-area: body;
+}
+.comment-form textarea {
+    display: block;
+}
+.comment-button{
+    all: unset;
+    display: inline;
     background-color: #306DBE;
     margin: 5px 5px;
-    padding: 4px;
+    padding: 6px;
     border-radius: 2px;
+    list-style-type: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+
+.comment-button:hover {
+    
+    background-color: #7999c2;
 }
 

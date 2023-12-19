@@ -120,6 +120,7 @@
     margin: 5px 0;
     padding: 4px;
     border-radius: 2px;
+    color: white;
 }
 
 .details-controls details.button:hover {

@@ -40,6 +40,7 @@ export const RecipeDetails = () => {
             })
     }, [recipeId]);
 
+    
     return (
         <div className={styles["details"]}>
             <div className={styles["details-container"]} >
@@ -60,7 +61,8 @@ export const RecipeDetails = () => {
                 }
                 <div className={styles["details-summary"]} >
                     <p className={styles["details-summary-prepTime"]} >Preparation time: {details.prepTime} </p>
-                    <ol className={styles["details-summary-ingredients"]} >Ingredients: {details.ingredients ? details.ingredients.map(x => <li key={x}>{x}</li>) : null}
+                    <ol className={styles["details-summary-ingredients"]} >Ingredients: {details.ingredients && 
+                    details.ingredients.map(x => <li key={x}>{x}</li>)}
                     </ol>
                 </div>
                 <div className={styles["details-steps"]} >
@@ -70,7 +72,11 @@ export const RecipeDetails = () => {
 
             {/* All comments */}
             <div className={styles["comments-container"]} >
-                {comments.length > 0 ? comments.map(x => <RecipeComment key={x._id} {...x} />) : <p className={styles["no-comments"]} >No comments posted yet.</p>}
+                {comments.length > 0 ? comments.map(x => <RecipeComment 
+                key={x._id} 
+                {...x} 
+                setComments={setComments} />) 
+                : <p className={styles["no-comments"]} >No comments posted yet.</p>}
             </div>
 
             {/* Comment Form */}

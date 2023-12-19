@@ -1,4 +1,4 @@
-import styles from"./RecipeItem.module.css";
+import styles from "./RecipeItem.module.css";
 import { Link } from "react-router-dom";
 
 export const RecipeItem = ({ _id, name, prepTime, ingredients, img }) => {
