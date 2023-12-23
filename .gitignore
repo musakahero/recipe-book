@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/
+/softuni-practice-server-master
 
 # testing
 /coverage
