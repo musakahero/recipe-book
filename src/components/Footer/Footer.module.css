@@ -2,10 +2,15 @@
     font-size: 1rem;
     position: absolute;
     bottom: 0;
+    height: 8vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0px 10px 0px;
-    background-color: #F5CD56;
+    /* background-color: #F5CD56; */
+    /* background-color: #306DBE; */
+    background-color: #D11B3F;
+    /* background: rgb(245, 205, 86); */
+    /* background: linear-gradient(0deg, rgba(245, 205, 86, 1) 75%, rgba(0, 212, 255, 0) 100%); */
 }

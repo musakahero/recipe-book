@@ -13,7 +13,7 @@ export const RecipeItem = ({ _id, name, prepTime, ingredients, img }) => {
             }
             <p className={`${styles["item-element"]} ${styles["item-name"]}`}> {name}</p>
             <p className={`${styles["item-element"]} ${styles["item-prepTime"]}`} >Preparation time: {prepTime}</p>
-            <p className={`${styles["item-element"]} ${styles["item-ingredientsCount"]}`}>Number of ingredients: {ingredients.length}</p>
+            <p className={`${styles["item-element"]} ${styles["item-ingredientsCount"]}`}>Ingredients: <br></br>{ingredients.length}</p>
         </div></Link>
     )
 }

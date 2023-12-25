@@ -1,41 +1,51 @@
+.reg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-.reg-title {
+.reg-container .reg-title {
     padding: 22px;
     text-align: center;
 }
 
-.reg-form {
-    padding: 50px 33%;
+.reg-container .reg-form {
+    padding: 3rem 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 20px;
-    justify-items: center;
-    align-items: center;
+    grid-template-columns: 1fr 1.3fr;
+    row-gap: 28px;
+    /* justify-items: center; */
+    /* align-items: center; */
     grid-template-areas:
-    '. .'
-    '. .'
-    '. .'
-    '. .'
-    'submit submit'
-    'already-reg already-reg'
+        '. .'
+        '. .'
+        '. .'
+        '. .'
+        'submit submit'
+        'already-reg already-reg'
 }
 
 /* Grid area naming */
-.reg-form .reg-submit {
-    grid-area: submit;
-}
-.reg-form .already-reg {
+
+.reg-container .reg-form .already-reg {
     grid-area: already-reg;
     text-align: center;
 }
 
-.reg-form input {
+.reg-container .reg-form input {
     border-radius: 40px;
     padding: 0px 20px;
     font-weight: 200;
 
 }
+.reg-container .reg-form label {
+    justify-self: center;
+}
 
 .here-btn {
-    color: rgb(134, 23, 134);
+    color:#D11B3F;
+}
+.here-btn:hover {
+    text-decoration: underline;
 }

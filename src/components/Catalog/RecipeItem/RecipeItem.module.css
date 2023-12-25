@@ -1,5 +1,6 @@
 .recipe-item {
     background-color: #F5CD56;
+    /* background-color: #306DBE; */
     border-radius: 20px;
     display: grid;
     height: 22rem;
@@ -10,6 +11,7 @@
         "img ."
         "img .";
     transition: 0.1s ease-in;
+    overflow: hidden;
 }
 
 /* hover animation */
@@ -19,12 +21,13 @@
     cursor: pointer;
 }
 
+/* displayed if author provided an img */
 .recipe-item .img-container {
     grid-area: img;
     background-size: cover;
     border-radius: 20px 0px 0px 20px;
 }
-
+/* displayed if author did not provide an img */
 .recipe-item .img-container-backup {
     background-image: url('../../../images/missing-photo.jpg');
     background-size: contain;
@@ -37,6 +40,7 @@
 
 .recipe-item .item-name {
     font-size: 1em;
+    overflow:hidden;
 }
 
 .recipe-item .item-element:not(.item-name) {
@@ -45,6 +49,6 @@
 
 .recipe-item p {
     padding: 20px;
-    align-self: center;
-
+    color: black;
+    text-align: center;
 }
