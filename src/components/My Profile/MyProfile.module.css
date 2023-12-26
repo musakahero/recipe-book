@@ -1,6 +1,7 @@
 .profile-container {
-    margin: 10rem;
-    background-color: rgb(87, 1, 87);
+    margin: 3rem;
+    /* background-color: rgb(87, 1, 87); */
+    background-color: #B234FD;
     color: white;
     font-size: 18px;
     text-align: center;

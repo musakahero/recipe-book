@@ -1,9 +1,12 @@
 .catalog {
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .catalog-title {
     padding: 22px;
     text-align: center;
+    font-size: 36px;
 }
 
 .catalog-container {

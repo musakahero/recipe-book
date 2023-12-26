@@ -8,6 +8,7 @@
 .reg-container .reg-title {
     padding: 22px;
     text-align: center;
+    font-size: 36px;
 }
 
 .reg-container .reg-form {
@@ -39,9 +40,7 @@
     font-weight: 200;
 
 }
-.reg-container .reg-form label {
-    justify-self: center;
-}
+
 
 .here-btn {
     color:#D11B3F;

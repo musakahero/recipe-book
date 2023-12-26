@@ -1,4 +1,5 @@
 import styles from './RecipeDetails.module.css';
+import clockIcon from '../../images/clock-icon.svg';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
@@ -7,6 +8,7 @@ import * as commentService from '../../services/commentService'
 // import { RecipeContext } from '../../contexts/RecipeContext';
 import { AuthContext } from '../../contexts/AuthContext';
 import { RecipeComment } from './RecipeComment/RecipeComment';
+import { Button } from './../Button/Button';
 
 export const RecipeDetails = () => {
 
@@ -19,6 +21,11 @@ export const RecipeDetails = () => {
     // Comment submit
     const onCommentSubmit = async (formValues) => {
         try {
+            console.log('here')
+            changeValues({
+                'content': '',
+                'username': username
+            }); //clears form values after submit
             const newComment = await commentService.createComment(recipeId, formValues.content, formValues.username, token); //post
             setComments(state => [...state, newComment]); // update comment state
             navigate(`/catalog/${recipeId}`);
@@ -29,7 +36,7 @@ export const RecipeDetails = () => {
     }
 
     //comment form handling via useForm hook
-    const { formValues, onChangeHandler, onSubmit } = useForm({
+    const { formValues, onChangeHandler, onSubmit, changeValues } = useForm({
         'content': '',
         'username': username
     }, onCommentSubmit);
@@ -44,7 +51,6 @@ export const RecipeDetails = () => {
                 setComments(comments);
             })
     }, [recipeId]);
-
 
     return (
         <div className={styles["details"]}>
@@ -65,13 +71,13 @@ export const RecipeDetails = () => {
                     : <div className={styles["details-img-container-backup"]} ></div>
                 }
                 <div className={styles["details-summary"]} >
-                    <p className={styles["details-summary-prepTime"]} >Preparation time: {details.prepTime} </p>
-                    <ol className={styles["details-summary-ingredients"]} >Ingredients: {details.ingredients &&
+                    <span className={styles["details-summary-prepTime"]} ><img src={clockIcon} className={styles["clock-icon"]} />{details.prepTime}</span>
+                    <ul className={styles["details-summary-ingredients"]} >Ingredients: {details.ingredients &&
                         details.ingredients.map(x => <li key={x}>{x}</li>)}
-                    </ol>
+                    </ul>
                 </div>
                 <div className={styles["details-steps"]} >
-                    <p>stepstetepeppss</p>
+                    <p>{details.steps}</p>
                 </div>
             </div>
 
@@ -83,15 +89,15 @@ export const RecipeDetails = () => {
                     setComments={setComments} />)
                     : <p className={styles["no-comments"]} >No comments posted yet.</p>}
             </div>
-
             {/* Comment Form */}
             {isAuthenticated() ?
                 <form method="post" className={styles["comment-form"]} onSubmit={onSubmit}>
                     <label htmlFor="content">Add new comment:</label>
                     <textarea className={styles["comment-content"]} type="text" cols={30} rows={3} name="content" value={formValues.content} onChange={onChangeHandler} />
-                    <button type="submit" className={`${styles["btn"]} ${styles["comment-submit"]}`}>Post comment</button>
+                    <Button type={'submit'} content={'Post'} />
                 </form>
                 : null}
+
         </div>
     )
 }

@@ -8,6 +8,7 @@
 .login-container .login-title {
     padding: 22px;
     text-align: center;
+    font-size: 36px;
 }
 
 .login-container .login-form {
@@ -26,18 +27,10 @@
 
 
 /* Grid area naming */
-.login-container .login-form .login-submit {
-    grid-area: submit;
-    justify-self: center;
-}
 
 .login-container .login-form .not-registered {
     grid-area: no-reg;
     text-align: center;
-}
-
-.login-container .login-form label {
-    justify-self: center;
 }
 
 .login-container .login-form input {

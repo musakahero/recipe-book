@@ -12,6 +12,7 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
 
     const onEditSubmit = async (formValues) => {
         try {
+            changeValues({content:''});
             const newComment = await commentService.editComment(_id, recipeId, formValues.content, username, token); //put
             setComments(state => [...state.filter(comment => comment._id !== _id), newComment]); // update all comments state
             setIsEdited(false); //close the form dialogue
@@ -54,8 +55,9 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
                 <form method='post' onSubmit={onSubmit} className={styles['comment-form']}>
                     <label htmlFor="content">Edit comment: </label>
                     <textarea name="content" cols={30} rows={3} value={formValues.content} onChange={onChangeHandler} />
-                    <button type='submit' className={styles["comment-button"]}>Save</button>
-                    <button type='button' className={styles["comment-button"]} onClick={() => setIsEdited(false)}>Discard</button>
+
+                    <button type='submit' className={`${styles["comment-button"]} ${styles["save-btn"]}`}>Save</button>
+                    <button type='button' className={`${styles["comment-button"]} ${styles["discard-btn"]}`} onClick={() => setIsEdited(false)}>Discard</button>
                 </form>
                 : (<>
                     <p className={styles["comment-owner"]}>User: {username}</p>

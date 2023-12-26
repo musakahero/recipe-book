@@ -1,6 +1,7 @@
 .edit-title {
     padding: 22px;
     text-align: center;
+    font-size: 36px;
 }
 
 .edit-form {
@@ -18,7 +19,7 @@
     'edit-ingredients edit-ingredients'
     'edit-steps-label edit-steps-label'
     'edit-steps edit-steps'
-    'edit-submit edit-submit'
+    'submit submit'
 }
 
 .edit-form textarea {

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import * as recipeService from '../../services/recipeService';
 import { RecipeContext } from "../../contexts/RecipeContext";
+import {Button} from '../Button/Button';
 
 export const Edit = () => {
     const { recipeId } = useParams();
@@ -52,7 +53,7 @@ export const Edit = () => {
                 <label className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
                 <textarea className={styles["edit-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} required/>
 
-                <button type="submit" className={`${styles["btn"]} ${styles["edit-submit"]}`}>Edit Recipe</button>
+                <Button type={"submit"} content={"Edit recipe"}/>
             </form>
         </div>
     )
