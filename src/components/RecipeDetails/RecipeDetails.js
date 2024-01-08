@@ -21,7 +21,13 @@ export const RecipeDetails = () => {
     // Comment submit
     const onCommentSubmit = async (formValues) => {
         try {
-            console.log('here')
+            //validation - check for empty strings
+            for (const field in formValues) {
+                if (formValues[field] == false) {
+                    throw Error('All fields must be filled.');
+                }
+            };
+
             changeValues({
                 'content': '',
                 'username': username
@@ -50,6 +56,9 @@ export const RecipeDetails = () => {
                 setDetails(recipeData);
                 setComments(comments);
             })
+            .catch(err => { //Handle server down situation
+                navigate('/nodata');
+            })
     }, [recipeId]);
 
     return (
@@ -57,11 +66,15 @@ export const RecipeDetails = () => {
             <div className={styles["details-container"]} >
                 <h1 className={styles["details-title"]} >{details.name}</h1>
                 <div className={styles["details-controls"]} >
+                    <div className={styles["details-prepTime"]}>
+                        <img src={clockIcon} className={styles["clock-icon"]} />
+                        <span>{details.prepTime}</span>
+                    </div>
                     {isAuthenticated() && userId === details._ownerId ?
-                        <>
+                        <div className={styles["controls-buttons"]}>
                             <Link className={styles["details-button"]} to={`/edit/${recipeId}`}>Edit</Link>
                             <Link className={styles["details-button"]} to={`/delete/${recipeId}`} >Delete</Link>
-                        </> : null}
+                        </div> : null}
 
                 </div>
                 {/* Check if there's any img URL provided. If not, put a backup img div */}
@@ -71,7 +84,6 @@ export const RecipeDetails = () => {
                     : <div className={styles["details-img-container-backup"]} ></div>
                 }
                 <div className={styles["details-summary"]} >
-                    <span className={styles["details-summary-prepTime"]} ><img src={clockIcon} className={styles["clock-icon"]} />{details.prepTime}</span>
                     <ul className={styles["details-summary-ingredients"]} >Ingredients: {details.ingredients &&
                         details.ingredients.map(x => <li key={x}>{x}</li>)}
                     </ul>

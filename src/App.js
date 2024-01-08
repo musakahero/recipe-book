@@ -17,16 +17,20 @@ import { Edit } from './components/Edit/Edit';
 import { Delete } from './components/Delete/Delete';
 import { MyProfile } from './components/My Profile/MyProfile';
 import { Footer } from './components/Footer/Footer';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
   const navigate = useNavigate();
   const [recipes, setRecipes] = useState([]);
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useLocalStorage('auth', {});
 
   useEffect(() => {
     recipeService.getAll()
       .then(result => {
         setRecipes(result)
+      })
+      .catch(err => { //Handle server down situation
+        navigate('/nodata');
       })
   }, []);
 
@@ -159,20 +163,31 @@ function App() {
           <Navbar />
           <main className={styles["main"]}>
             <Routes>
+              {/* public routes */}
               <Route path='/' element={<Home />} />
               <Route path='/catalog' element={<Catalog recipes={recipes} />} />
-              <Route path='/create' element={<Create />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/logout' element={<Logout />} />
-              <Route path='/catalog/:recipeId' element={<RecipeDetails />} />
-              <Route path='/edit/:recipeId' element={<Edit />} />
-              <Route path='/delete/:recipeId' element={<Delete />} />
-              <Route path='/profile/:userId' element={<MyProfile />} />
+
+              {/* authenticated-only routes */}
+              {authContextObj.isAuthenticated() ?
+                <>
+                  <Route path='/create' element={<Create />} />
+                  <Route path='/logout' element={<Logout />} />
+                  <Route path='/catalog/:recipeId' element={<RecipeDetails />} />
+                  <Route path='/edit/:recipeId' element={<Edit />} />
+                  <Route path='/delete/:recipeId' element={<Delete />} />
+                  <Route path='/profile/:userId' element={<MyProfile />} />
+                </>
+                // unathenticated-only routes
+                : <>
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
+                </>}
+              {/* Edge cases */}
               <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
+              <Route path='/nodata' element={<div><h1>Server error</h1><h2>The data is currently unavailable. We are sorry for the inconvenience!</h2></div>} />
             </Routes>
           </main>
-          <Footer/>
+          <Footer />
         </div>
       </AuthContext.Provider>
     </RecipeContext.Provider>

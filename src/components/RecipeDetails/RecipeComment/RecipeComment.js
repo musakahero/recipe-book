@@ -12,13 +12,13 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
 
     const onEditSubmit = async (formValues) => {
         try {
-            changeValues({content:''});
+            changeValues({ content: '' });
             const newComment = await commentService.editComment(_id, recipeId, formValues.content, username, token); //put
             setComments(state => [...state.filter(comment => comment._id !== _id), newComment]); // update all comments state
             setIsEdited(false); //close the form dialogue
             navigate(`/catalog/${recipeId}`);
         } catch (err) {
-            alert(err.message)
+            alert(err.message);
         }
     }
 
@@ -43,25 +43,41 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
 
     return (
         <div className={styles["comment-container"]}>
-            <ul className={styles["comment-controls"]}>
+            {/* <ul className={styles["comment-controls"]}>
                 {userId === _ownerId &&
                     <>
                         <li onClick={onEditClick} className={styles["comment-button"]}>Edit</li>
                         <li onClick={onDeleteClick} className={styles["comment-button"]}>Delete</li>
                     </>}
-            </ul>
+            </ul> */}
             {/* open form if Edit is clicked */}
             {isEdited ?
-                <form method='post' onSubmit={onSubmit} className={styles['comment-form']}>
-                    <label htmlFor="content">Edit comment: </label>
-                    <textarea name="content" cols={30} rows={3} value={formValues.content} onChange={onChangeHandler} />
+                <>
+                    <label htmlFor="content" className={styles["comment-owner"]}>Edit comment: </label>
+                    <form method='post' onSubmit={onSubmit} className={styles['comment-body']}>
+                        <textarea name="content" cols={29} rows={2} value={formValues.content} onChange={onChangeHandler} />
+                        <div className={styles['comment-controls']}>
+                            <button type='submit' className={`${styles["comment-button"]} ${styles["save-btn"]}`}>Save</button>
 
-                    <button type='submit' className={`${styles["comment-button"]} ${styles["save-btn"]}`}>Save</button>
-                    <button type='button' className={`${styles["comment-button"]} ${styles["discard-btn"]}`} onClick={() => setIsEdited(false)}>Discard</button>
-                </form>
+                            <button type="button" onClick={onDeleteClick} className={styles["comment-button"]}>Delete</button>
+
+                            <button type='button' className={`${styles["comment-button"]} ${styles["discard-btn"]}`} onClick={() => setIsEdited(false)}>Cancel</button>
+                        </div>
+                    </form>
+                </>
                 : (<>
                     <p className={styles["comment-owner"]}>User: {username}</p>
-                    <p className={styles["comment-body"]}>{content}</p>
+                    <div className={styles["comment-body"]}>
+                        <p className={styles["comment-content"]}>{content}</p>
+                        <div className={styles["comment-controls"]}>
+                            {userId === _ownerId &&
+                                <>
+                                    <button type="button" onClick={onEditClick} className={styles["comment-button"]}>Edit</button>
+                                    <button type="button" onClick={onDeleteClick} className={styles["comment-button"]}>Delete</button>
+                                </>}
+                        </div>
+                    </div>
+
                 </>
                 )}
         </div>

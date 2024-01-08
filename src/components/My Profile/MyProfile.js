@@ -1,18 +1,22 @@
 import styles from './MyProfile.module.css';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as recipeService from '../../services/recipeService';
-import { ProfileRecipeItem } from './ProfileRecipeItem/ProfileRecipeItem';
+import {RecipeItem} from '../Catalog/RecipeItem/RecipeItem';
 
 export const MyProfile = () => {
     const [myRecipes, setMyRecipes] = useState([]);
     const {userId} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         recipeService.getOwned(userId)
         .then(result => {
             setMyRecipes(result);
         })
+        .catch(err => { //Handle server down situation
+            navigate('/nodata');
+          })
     }, [userId]);
 
     return (
@@ -20,7 +24,7 @@ export const MyProfile = () => {
             <h1>Your recipes</h1>
             <div className={styles["catalog"]}>
             <div className={styles["catalog-container"]}>
-                {myRecipes.map(x => <ProfileRecipeItem key={x._id} {...x}/>)}
+                {myRecipes.map(x => <RecipeItem key={x._id} {...x}/>)}
             </div>
         </div>
 

@@ -25,6 +25,7 @@
 .recipe-item .img-container {
     grid-area: img;
     background-size: cover;
+    background-position: center;
     border-radius: 20px 0px 0px 20px;
 }
 /* displayed if author did not provide an img */
