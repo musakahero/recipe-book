@@ -31,7 +31,6 @@ export const deleteItem = async (recipeId, token) => {
 
 export const getOwned = async (userId) => {
     const searchQuery = encodeURIComponent(`_ownerId="${userId}"`);
-    // const relationQuery = encodeURIComponent(`author=_ownerId:users`);
     const result = await request.get(`${baseUrl}?where=${searchQuery}`);
     return Object.values(result);
 };

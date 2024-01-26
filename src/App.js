@@ -23,11 +23,16 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [auth, setAuth] = useState({});
 
+  //TODO: test trycatch
   useEffect(() => {
-    recipeService.getAll()
-      .then(result => {
-        setRecipes(result)
-      })
+    try {
+      recipeService.getAll()
+        .then(result => {
+          setRecipes(result)
+        })
+    } catch (err) {
+      alert(err.message)
+    }
   }, []);
 
 
@@ -172,7 +177,7 @@ function App() {
               <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
             </Routes>
           </main>
-          <Footer/>
+          <Footer />
         </div>
       </AuthContext.Provider>
     </RecipeContext.Provider>
