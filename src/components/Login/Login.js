@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { Button } from "../Button/Button";
 
 export const Login = () => {
     const { onLoginSubmit } = useContext(AuthContext);
@@ -23,7 +24,7 @@ export const Login = () => {
                 <label htmlFor="password">Password</label>
                 <input className={styles["login-password"]} name="password" type="password" onChange={onChangeHandler} value={formValues.password} required/>
 
-                <button type="submit" className={`${styles["btn"]} ${styles["login-submit"]}`}>Sign in</button>
+                <Button type="submit" content="Sign in"/>
 
                 <p className={styles["not-registered"]}>Not registered yet? Click <Link className={styles["here-btn"]} to={'/register'}>here</Link> to create an account.</p>
             </form>

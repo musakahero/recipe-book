@@ -1,0 +1,16 @@
+.button{
+    all:unset;
+    background-color: #FDB234;
+    margin: 5px 0;
+    padding: 4px 12px;
+    border-radius: 2px;
+    color: black;
+    grid-area: submit;
+    justify-self: center;
+    cursor: pointer;
+
+}
+
+.button:hover {
+    background-color: #fdc15c;
+}

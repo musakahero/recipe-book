@@ -1,19 +1,65 @@
 .comment-container {
-    background-color: lightgrey;
+    background-color: #fdb234;
     padding: 1rem;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: 
-    'owner controls'
-    'body controls'
-    '. .'
+    grid-template-columns: 3fr auto;
+    grid-template-rows: auto 3fr;
+    grid-template-areas:
+        'owner owner'
+        'body body';
+}
+
+.comment-container .comment-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-container .comment-body .comment-content {
+    background-color: #fdc15c;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+.comment-container .comment-body .comment-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.comment-container .save-btn {
+    margin-right: 0.5rem;
+}
+
+.comment-body textarea {
+    padding: 0.5rem 1rem;
+}
+
+.comment-button {
+    background-color: #fdc15c;
+    border: 1px solid #b234fd;
+    margin: 5px 0;
+    padding: 4px 12px;
+    border-radius: 2px;
+    color: black;
+    /* justify-self: center; */
+    cursor: pointer;
+    list-style-type: none;
+    text-align: center;
+}
+
+.comment-button:hover {
+    background-color: #feb8ad;
+    color: black;
 }
 
 /* grid areas */
 .comment-controls {
     grid-area: controls;
 }
+
 .comment-owner {
     grid-area: owner;
 }
@@ -21,24 +67,3 @@
 .comment-body {
     grid-area: body;
 }
-.comment-form textarea {
-    display: block;
-}
-.comment-button{
-    all: unset;
-    display: inline;
-    background-color: #306DBE;
-    margin: 5px 5px;
-    padding: 6px;
-    border-radius: 2px;
-    list-style-type: none;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-}
-
-.comment-button:hover {
-    
-    background-color: #7999c2;
-}
-

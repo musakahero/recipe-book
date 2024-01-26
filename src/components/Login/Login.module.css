@@ -1,38 +1,47 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-.login-title {
+.login-container .login-title {
     padding: 22px;
     text-align: center;
+    font-size: 36px;
 }
 
-.login-form {
-    padding: 50px 33%;
+.login-container .login-form {
+    padding: 3rem 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 20px;
-    justify-items: center;
-    align-items: center;
+    grid-template-columns: 1fr 1.3fr;
+    row-gap: 28px;
+    /* justify-items: end; */
+    /* align-items: center; */
     grid-template-areas:
-    '. .'
-    '. .'
-    'submit submit'
-    'no-reg no-reg'
+        '. .'
+        '. .'
+        'submit submit'
+        'no-reg no-reg'
 }
+
 
 /* Grid area naming */
-.login-form .login-submit {
-    grid-area: submit;
-}
-.login-form .not-registered {
+
+.login-container .login-form .not-registered {
     grid-area: no-reg;
     text-align: center;
 }
 
-.login-form input {
+.login-container .login-form input {
     border-radius: 40px;
     padding: 0px 20px;
     font-weight: 200;
 }
 
 .here-btn {
-    color: rgb(134, 23, 134);
+    color:#D11B3F;
+}
+.here-btn:hover {
+    text-decoration: underline;
 }

@@ -2,7 +2,7 @@ import styles from "./Create.module.css";
 import { useForm } from "../../hooks/useForm";
 import { useContext } from "react";
 import { RecipeContext } from "../../contexts/RecipeContext";
-
+import {Button} from "../Button/Button"
 export const Create = () => {
 
     const { onCreateSubmit } = useContext(RecipeContext);
@@ -36,7 +36,7 @@ export const Create = () => {
                 <label  className={styles["steps-label"]} htmlFor="steps">Steps to prepare:* </label>
                 <textarea className={styles["create-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} required/>
 
-                <button type="submit" className={`${styles["btn"]} ${styles["create-submit"]}` }>Add Recipe</button>
+                <Button content="Add recipe" type={"submit"}/>
             </form>
         </div>
     )

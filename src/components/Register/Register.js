@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from 'react-router-dom';
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { Button } from "../Button/Button";
 
 export const Register = () => {
     const { onRegisterSubmit } = useContext(AuthContext);
@@ -31,8 +32,7 @@ export const Register = () => {
                 <label htmlFor="repeat">Confirm password</label>
                 <input className={styles["reg-repeat"]} name="repeat" type="password" onChange={onChangeHandler} value={formValues.repeat} required/>
 
-                <button type="submit" className={`${styles["btn"]} ${styles["reg-submit"]}`} >Register</button>
-
+                <Button content={"Register"} type={"submit"}/>
                 <p className={styles["already-reg"]} >Already registered? Click <Link className={styles["here-btn"]} to={'/login'}>here</Link> to log into your account.</p>
             </form>
         </div>

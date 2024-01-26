@@ -1,128 +1,148 @@
-/*  nice red: #D11B3F;
-    nice blue: #306DBE;
-    nice yellow: #F5CD56;
-*/
-
 .details {
-    background-color: lightgrey;
+    margin: 2rem 5rem;
+    /* padding: 2rem; */
+    background-color: #b234fd;
+    display: flex;
+    flex-direction: column;
 }
 
-.details-container {
-    background-color: #F5CD56;
-    margin: 5rem 10rem 2rem 10rem;
-    padding: 1rem 2rem 2rem 2rem;
-    border-radius: 20px;
-    display: grid;
-    height: 90vh;
-    grid-template-columns: 1.5fr 2fr;
-    grid-template-rows: 1fr 5fr 5fr;
-    grid-template-areas:
-        'title edit'
-        'img summary'
-        'img .'
-        'all-comments all-comments'
+.details>div {
+    margin: 1.5rem;
+    padding: 2rem;
 }
 
-.details-title {
+.details .details-title {
     text-align: center;
-    grid-area: title;
-    padding-bottom: 1rem;
 }
 
-.details-summary {
-    grid-area: summary;
-    margin: 0rem 2rem 1rem 4rem;
-    font-weight: 300;
-}
-
-.details-summary-prepTime {
-    margin: 0rem 0rem 1rem 1rem;
-    padding: 0 0 0 2rem;
-}
-
-.details-summary-ingredients {
-    margin: 0rem 0rem 0rem 3rem;
-    padding: 1rem 2rem;
-
-}
-
-.details-steps {
-    background-color: #306DBE;
-    margin: 0rem 1rem 0 7rem;
+.details .details-container {
+    background-color: #fdc734;
+    /* background-color: #1bd152; */
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 0.5fr 5fr auto;
+    gap: 2rem;
+    grid-template-areas:
+        'title title'
+        'img controls'
+        'img  summary'
+        'steps steps';
     border-radius: 20px;
-    color: white;
-    font-weight: 500;
+    padding-left: 9rem;
+    padding-right: 9rem;
+}
+
+.details .details-container .details-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details .details-container .details-controls .controls-buttons>a {
+    margin-left: 0.5rem;
+}
+
+/* remove top gap for summary area */
+.details .details-container .details-summary {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+
+}
+.details .details-container .details-controls .details-prepTime {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    width: 15rem;
+}
+.details .details-container .details-controls .details-prepTime .clock-icon {
+    margin-right: 0.5rem;
+}
+.details .details-container .details-summary .details-summary-ingredients {
+    all: unset;
+    align-self: flex-start;
+}
+.details .details-container .details-summary .details-summary-ingredients li {
+    margin-left: 1.5rem;
+    list-style: circle;
+    font-weight: lighter;
+}
+.details .details-container .details-steps {
+    /* word-break: break-all; */
+    word-break: break-word;
+    background-color: #fdc15c;
     padding: 1rem;
+    font-weight: lighter;
 }
 
+/* Recipe image styling */
 .details-img-container {
+    margin: 0rem 6rem 0rem 0rem;
     grid-area: img;
-    background-size: cover;
-    /* border-radius: 20px 0px 0px 20px; */
+    background-size:cover;
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: center; 
+    border-radius: 20px 20px 20px 20px;
 }
-
 .details-img-container-backup {
     background-image: url('../../images/missing-photo.jpg');
-    background-size: 'contain';
+    /* background-size:500px 500px; */
     background-repeat: no-repeat;
     background-color: white;
     background-position: center;
+    aspect-ratio: 1/1;
     grid-area: img;
     border-radius: 20px 20px 20px 20px;
+    margin: 0rem 6rem 0rem 0rem;
+
 }
 
-.comments-container {
-    background-color: #D11B3F;
-    grid-area: all-comments;
-    margin: 0rem 10rem;
-    padding: 1rem;
+/* Links styling */
+.details-button {
+    background-color: #fdc15c;
+    margin: 5px 0;
+    padding: 4px 12px;
+    border-radius: 2px;
+    color: black;
+    justify-self: center;
+    cursor: pointer;
+    border: 1px solid #b234fd;
+}
+.details-button:hover {
+    background-color: #feb8ad;
+    color: black;
+}
+
+/* Comment section styling */
+.details .comments-container {
+    background-color: #efd6fe;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     border-radius: 20px;
 }
 
-.comment-form {
-    background: lightgrey;
-    width: 50vw;
-    text-align: center;
-    margin: 2rem auto;
-    display: grid;
-    padding: 1rem;
-    border-radius: 20px;
-}
-
-.comment-form textarea{
-    border-radius: 20px;
-}
-
-.comment-form .comment-submit {
-    border-radius: 30px;
-    width: 20rem;
-    margin: 10px auto;
-}
-
-.no-comments {
-    color: white;
-    margin: 0rem 1rem;
-}
-
-.details-controls {
+.details .comment-form {
     display: flex;
     flex-direction: column;
-    grid-area: edit;
-    align-items: flex-end;
-    margin: 0 1rem;
+    padding: 0rem 5rem 2rem 5rem;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.details-controls .details-button{
-    background-color: #306DBE;
-    margin: 5px 0;
-    padding: 4px;
-    border-radius: 2px;
-    color: white;
+/* grid areas */
+.details .details-title {
+    grid-area: title;
 }
-
-.details-controls details.button:hover {
-    background-color: #8099bb;
+.details .details-controls {
+    grid-area: controls;
+}
+.details .details-img-container {
+    grid-area: img;
+}
+.details .details-summary {
+    grid-area: summary;
+}
+.details .details-steps {
+    grid-area: steps;
 }
