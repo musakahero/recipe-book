@@ -2,18 +2,49 @@ import styles from './RecipeDetails.module.css';
 import clockIcon from '../../images/clock-icon.svg';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import * as recipeService from '../../services/recipeService'
 import * as commentService from '../../services/commentService'
 import { AuthContext } from '../../contexts/AuthContext';
-import { CommentSection } from '../Comment Section/CommentSection';
+import { RecipeComment } from './RecipeComment/RecipeComment';
+import { Button } from '../Button/Button';
 
 export const RecipeDetails = () => {
 
     const navigate = useNavigate();
-    const {isAuthenticated, userId } = useContext(AuthContext);
+    const { token, isAuthenticated, username, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
     const [details, setDetails] = useState({});
     const [comments, setComments] = useState([]);
+
+    // Comment submit
+    const onCommentSubmit = async (formValues) => {
+        try {
+            //validation - check for empty strings
+            for (const field in formValues) {
+                if (formValues[field] == false) {
+                    throw Error('All fields must be filled.');
+                }
+            };
+
+            changeValues({
+                'content': '',
+                'username': username
+            }); //clears form values after submit
+            const newComment = await commentService.createComment(recipeId, formValues.content, formValues.username, token); //post
+            setComments(state => [...state, newComment]); // update comment state
+            navigate(`/catalog/${recipeId}`);
+        } catch (err) {
+            alert(err.message)
+        }
+
+    }
+
+    //comment form handling via useForm hook
+    const { formValues, onChangeHandler, onSubmit, changeValues } = useForm({
+        'content': '',
+        'username': username
+    }, onCommentSubmit);
 
     //get one request and save the details to state
     useEffect(() => {
@@ -38,7 +69,6 @@ export const RecipeDetails = () => {
                         <img src={clockIcon} className={styles["clock-icon"]} alt='Duration icon' />
                         <span>{details.prepTime}</span>
                     </div>
-                    {/* Show control buttons if user is authenticated & authorized */}
                     {isAuthenticated() && userId === details._ownerId ?
                         <div className={styles["controls-buttons"]}>
                             <Link className={styles["details-button"]} to={`/edit/${recipeId}`}>Edit</Link>
@@ -62,8 +92,22 @@ export const RecipeDetails = () => {
                 </div>
             </div>
 
-            {/* Display Comment section */}
-           <CommentSection comments={comments} setComments={setComments} recipeId={recipeId}/>
+            {/* All comments */}
+            <div className={styles["comments-container"]} >
+                {comments.length > 0 ? comments.map(x => <RecipeComment
+                    key={x._id}
+                    {...x}
+                    setComments={setComments} />)
+                    : <p className={styles["no-comments"]} >No comments posted yet.</p>}
+            </div>
+            {/* Comment Form */}
+            {isAuthenticated() ?
+                <form method="post" className={styles["comment-form"]} onSubmit={onSubmit}>
+                    <label htmlFor="content">Add new comment:</label>
+                    <textarea className={styles["comment-content"]} type="text" cols={30} rows={3} name="content" value={formValues.content} onChange={onChangeHandler} />
+                    <Button type={'submit'} content={'Post'} />
+                </form>
+                : null}
 
         </div>
     )

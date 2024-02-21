@@ -20,10 +20,8 @@ import * as authService from './services/authService';
 import * as recipeService from './services/recipeService';
 
 
-
 function App() {
   const navigate = useNavigate();
-  const [recipes, setRecipes] = useState([]);
   const [allRecipes, setAllRecipes] = useState([]);
   const [auth, setAuth] = useLocalStorage('auth', {});
   // const [details, setDetails] = useState({});
@@ -32,13 +30,12 @@ function App() {
   useEffect(() => {
     recipeService.getAll()
       .then(result => {
-        setRecipes(result);
         setAllRecipes(result);
       })
       .catch(err => { //Handle server down situation
         navigate('/nodata');
         setAuth({});
-      })
+      });
   }, []);
 
   //Operation handlers
@@ -106,7 +103,7 @@ function App() {
       //post request
       const newRecipe = await recipeService.create(formValues, auth.accessToken);
       //update allRecipes state
-      setRecipes(state => [...state, newRecipe]);
+      // setRecipes(state => [...state, newRecipe]);
       setAllRecipes(state => [...state, newRecipe]);
       navigate('/catalog');
 
@@ -114,7 +111,6 @@ function App() {
       alert(err.message);
     }
   };
-
   const onEditSubmit = async (formValues) => {
     try {
       //validation - check if empty strings in mandatory fields only
@@ -135,28 +131,13 @@ function App() {
       const result = await recipeService.edit(formValues._id, formValues, auth.accessToken);
 
       //update Recipes state
-      setRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
+      // setRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
       setAllRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
       navigate(`/catalog/${formValues._id}`);
 
     } catch (err) {
       alert(err.message);
     }
-  };
-
-  const onSearchSubmit = async (formValues) => {
-    try {
-      //post request
-      const result = await recipeService.search(formValues.searchString, authContextObj.token);
-      //update state
-      setRecipes(result);
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
-  const onResetSubmit = () => {
-    setRecipes(allRecipes);
   };
 
   //Context objects
@@ -174,51 +155,47 @@ function App() {
     setAuth
   };
   const recipeContextObj = {
-    recipes,
     allRecipes,
-    setRecipes,
     setAllRecipes,
     onCreateSubmit,
-    onEditSubmit,
-    onSearchSubmit,
-    onResetSubmit
+    onEditSubmit
   };
- 
+
 
   return (
     <RecipeContext.Provider value={recipeContextObj}>
       <AuthContext.Provider value={authContextObj}>
-          <div className={styles["App"]}>
-            <Navbar />
-            <main className={styles["main"]}>
-              <Routes>
-                {/* public routes */}
-                <Route path='/' element={<Home />} />
-                <Route path='/catalog' element={<Catalog recipes={recipes} />} />
-                <Route path='/catalog/:recipeId' element={<RecipeDetails />} />
-                {/* authenticated-only routes */}
-                {authContextObj.isAuthenticated() ?
-                  <>
-                    <Route path='/create' element={<Create />} />
-                    <Route path='/logout' element={<Logout />} />
-                    {/* authorized-user-only routes */}
-                    <Route path='/edit/:recipeId' element={<Edit />} />
-                    <Route path='/delete/:recipeId' element={<Delete />} />
-                    <Route path='/profile/:param_userId' element={<MyProfile />} />
-                  </>
-                  // unauthenticated-only routes
-                  : <>
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/login' element={<Login />} />
-                  </>}
-                {/* Edge cases */}
-                <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
-                <Route path='/nodata' element={<div><h1>Server error</h1><h2>The data is currently unavailable. We are sorry for the inconvenience!</h2></div>} />
-                <Route path='/unauthorized' element={<div><h1>Unauthorized</h1><h2>You do not have access to this page.</h2></div>} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+        <div className={styles["App"]}>
+          <Navbar />
+          <main className={styles["main"]}>
+            <Routes>
+              {/* public routes */}
+              <Route path='/' element={<Home />} />
+              <Route path='/catalog' element={<Catalog allRecipes={allRecipes} />} />
+              <Route path='/catalog/:recipeId' element={<RecipeDetails />} />
+              {/* authenticated-only routes */}
+              {authContextObj.isAuthenticated() ?
+                <>
+                  <Route path='/create' element={<Create />} />
+                  <Route path='/logout' element={<Logout />} />
+                  {/* authorized-user-only routes */}
+                  <Route path='/edit/:recipeId' element={<Edit />} />
+                  <Route path='/delete/:recipeId' element={<Delete />} />
+                  <Route path='/profile/:param_userId' element={<MyProfile />} />
+                </>
+                // unauthenticated-only routes
+                : <>
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
+                </>}
+              {/* Edge cases */}
+              <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
+              <Route path='/nodata' element={<div><h1>Server error</h1><h2>The data is currently unavailable. We are sorry for the inconvenience!</h2></div>} />
+              <Route path='/unauthorized' element={<div><h1>Unauthorized</h1><h2>You do not have access to this page.</h2></div>} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </AuthContext.Provider>
     </RecipeContext.Provider>
   );

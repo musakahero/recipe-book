@@ -17,4 +17,8 @@
     color: black;
 }
 
-
+.catalog-search-sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}

@@ -1,0 +1,16 @@
+/* Comment section styling */
+.comments-container {
+    background-color: #efd6fe;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    border-radius: 20px;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 5rem 2rem 5rem;
+    justify-content: flex-start;
+    align-items: center;
+}

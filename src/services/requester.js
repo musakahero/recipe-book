@@ -30,6 +30,7 @@ export const request = async (method, url, data, token, isLogout) => {
     //return result only if response code is OK
     if (!response.ok) {
         if (response.status === 403) {
+            alert('You have to sign in first!');
             <Navigate to="/login" />
             // throw Error('You have to sign in!');
         } else {

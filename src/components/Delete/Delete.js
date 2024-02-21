@@ -8,7 +8,7 @@ export const Delete = () => {
 
     const { recipeId } = useParams();
     const { token } = useContext(AuthContext);
-    const { setRecipes, setAllRecipes, allRecipes, recipes } = useContext(RecipeContext);
+    const { setRecipes, setAllRecipes} = useContext(RecipeContext);
     const { userId } = useContext(AuthContext);
     const navigate = useNavigate();
 

@@ -1,0 +1,15 @@
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* padding-right: 30px; */
+    padding: 18px 30px 18px 0;
+
+}
+
+.sort-select {
+    /* width: 25.5rem; */
+    font-size: 24px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
