@@ -1,4 +1,7 @@
+import { Navigate } from "react-router-dom";
+
 export const request = async (method, url, data, token, isLogout) => {
+
     const options = {};
 
     //isLogout defines whether body is required for the GET request
@@ -18,6 +21,7 @@ export const request = async (method, url, data, token, isLogout) => {
 
     const response = await fetch(url, options);
     if (response.status === 204) {
+
         return {};
     }
 
@@ -25,9 +29,17 @@ export const request = async (method, url, data, token, isLogout) => {
 
     //return result only if response code is OK
     if (!response.ok) {
-        //thrown Error is caught in the onLoginSubmit try-catch.
-        throw Error('Invalid username or password!');
+        if (response.status === 403) {
+            <Navigate to="/login" />
+            // throw Error('You have to sign in!');
+        } else {
+            //thrown Error is caught in the onLoginSubmit try-catch.
+            throw Error('Something went wrong!');
+        };
+
     } else {
+        console.log(response.status);
+
         return result;
     }
 }

@@ -8,7 +8,7 @@ export const useForm = (initialValues, onSubmitHandler) => {
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
-    //create new onSubmit func to have formValues reference and return it to Create comp
+    //create new onSubmit func to have formValues reference and return it
     const onSubmit = (e) => {
         e.preventDefault();
         onSubmitHandler(formValues);

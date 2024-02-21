@@ -1,0 +1,10 @@
+.catalog-search-container {
+    padding: 30px;
+}
+
+.catalog-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}

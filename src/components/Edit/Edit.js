@@ -1,14 +1,16 @@
 import styles from './Edit.module.css';
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import * as recipeService from '../../services/recipeService';
 import { RecipeContext } from "../../contexts/RecipeContext";
 import { Button } from '../Button/Button';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Edit = () => {
     const { recipeId } = useParams();
     const { onEditSubmit } = useContext(RecipeContext);
+    const { userId } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const { formValues, onChangeHandler, onSubmit, changeValues } = useForm({
@@ -20,16 +22,21 @@ export const Edit = () => {
         steps: ''
     }, onEditSubmit);
 
-    //get one to fill in the current details
+    //getOne to fill in the current details
     useEffect(() => {
         recipeService.getOne(recipeId)
             .then(result => {
+                // Deny access if userId != _ownerId of recipe
+                if((result._ownerId !== userId)){
+                    navigate('/unauthorized');
+                }
                 //changeValues updates the initialValues for the useForm hook
                 changeValues(result);
             })
             .catch(err => { //Handle server down situation
                 navigate('/nodata');
-            })
+            });
+        
     }, [recipeId]);
 
     return (

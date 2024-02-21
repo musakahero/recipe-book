@@ -33,3 +33,10 @@ export const getOwned = async (userId) => {
     const result = await request.get(`${baseUrl}?where=${searchQuery}`);
     return Object.values(result);
 };
+
+export const search = async (searchString, token) => {
+    const searchQuery = encodeURIComponent(`name LIKE "${searchString}"`);
+    const result = await request.get(`${baseUrl}?where=${searchQuery}`);
+    return result;
+    
+}

@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import * as recipeService from '../../services/recipeService'
 import * as commentService from '../../services/commentService'
-// import { RecipeContext } from '../../contexts/RecipeContext';
 import { AuthContext } from '../../contexts/AuthContext';
 import { RecipeComment } from './RecipeComment/RecipeComment';
 import { Button } from './../Button/Button';

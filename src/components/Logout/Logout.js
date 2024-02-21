@@ -8,6 +8,6 @@ export const Logout = () => {
     useEffect( () => {
         onLogoutClick(token);
     }, [onLogoutClick, token]);
-
+    
     return <Navigate to="/" />
 }
