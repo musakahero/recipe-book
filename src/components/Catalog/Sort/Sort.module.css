@@ -8,8 +8,10 @@
 }
 
 .sort-select {
-    /* width: 25.5rem; */
-    font-size: 24px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    
 }

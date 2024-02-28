@@ -2,6 +2,8 @@ import styles from "./Navbar.module.css";
 import { Link, NavLink } from 'react-router-dom';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKitchenSet } from '@fortawesome/free-solid-svg-icons';
 
 export const Navbar = () => {
     //style to apply for active tabs
@@ -17,7 +19,7 @@ export const Navbar = () => {
 
     return (
         <nav className={styles["nav"]}>
-            <Link to="/"><span className={styles["logo"]}>Home</span></Link>
+            <Link to="/"><span className={styles["logo"]}><FontAwesomeIcon icon={faKitchenSet} style={{fontSize: '3rem'}}/></span></Link>
             <ul className={styles["menu"]}>
                 <NavLink to="/catalog" style={activeStyle}><li className={styles["nav-item"]}>All recipes</li></NavLink>
                 {/* Check if authenticated, private side */}
@@ -26,7 +28,8 @@ export const Navbar = () => {
                         <NavLink to="/create"
                             style={activeStyle}
                         ><li className={styles["nav-item"]}>Add new recipe</li></NavLink>
-                        <li className={`${styles["userPanel"]} ${styles["nav-item"]}`} onClick={() => { setUserPanelClicked(!userPanelClicked) }}>Welcome, {username}
+                        <li className={`${styles["userPanel"]} ${styles["nav-item"]}`} 
+                        onClick={() => { setUserPanelClicked(!userPanelClicked)}}>Welcome, {username}
                             {/* Drop-down functionality */}
                             {userPanelClicked &&
                                 <ul className={styles["userPanel-dropdown"]}>

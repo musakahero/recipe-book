@@ -12,6 +12,8 @@
 }
 
 .search-field {
+    border-radius: 8px;
+    border: 1px solid grey;
     padding-left: 12px;
     padding-right: 12px;
 }

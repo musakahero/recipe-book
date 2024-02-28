@@ -8,7 +8,7 @@ export const Delete = () => {
 
     const { recipeId } = useParams();
     const { token } = useContext(AuthContext);
-    const { setRecipes, setAllRecipes} = useContext(RecipeContext);
+    const { setAllRecipes} = useContext(RecipeContext);
     const { userId } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ export const Delete = () => {
     const onDeleteClick = async () => {
         try {
             await recipeService.deleteItem(recipeId, token);
-             setRecipes(state => state.filter(x => x._id !== recipeId));
              setAllRecipes(state => state.filter(x => x._id !== recipeId));
         } catch (err) {
             alert(`Deletion failed: ${err.message}`);

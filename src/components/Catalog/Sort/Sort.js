@@ -1,22 +1,24 @@
 import styles from "./Sort.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSort } from '@fortawesome/free-solid-svg-icons';
 
-export const Sort = ({ setSelectedSort, selectedSort }) => {
+export const Sort = ({ setSelectedSort, selectedSort, icon }) => {
     const handleDropdownChange = (e) => {
         setSelectedSort(e.target.value);
     };
 
     return (
         <div className={styles["sort-container"]}>
-            <label htmlFor="sortSelect">Sort</label>
+           <FontAwesomeIcon icon={faSort}/>
             <select name="sortSelect"
                 className={styles["sort-select"]}
                 value={selectedSort}
                 onChange={handleDropdownChange}>
 
-                <option value="name_asc">By name, ascending</option>
-                <option value="name_desc">By name, descending</option>
-                <option value="ingr_asc">By total ingredients, ascending</option>
-                <option value="ingr_desc">By total ingredients, descending</option>
+                <option value="name_asc">A-Z &#8593;</option>
+                <option value="name_desc">A-Z &#8595;</option>
+                <option value="ingr_asc">Ingredients &#8593;</option>
+                <option value="ingr_desc">Ingredients &#8595;</option>
             </select>
         </div>
     )
