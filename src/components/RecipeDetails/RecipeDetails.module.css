@@ -1,9 +1,9 @@
 .details {
     margin: 2rem 5rem;
     /* padding: 2rem; */
-    background-color: #b234fd;
+    background-color: #a45bce;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
 }
 
 .details>div {
@@ -35,29 +35,42 @@
 .details .details-container .details-controls {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
-
-.details .details-container .details-controls .controls-buttons>a {
-    margin-left: 0.5rem;
-}
-
-/* remove top gap for summary area */
-.details .details-container .details-summary {
+.details .details-container .details-controls .controls-buttons {
     display: flex;
     flex-direction: column;
     /* align-items: flex-end; */
-
+    justify-content: center;
+    padding: 0 0.5rem 0 0.5rem;
+    text-align: center;
 }
+.details .details-container .details-controls .controls-buttons>a {
+    /* margin-left: 0.5rem; */
+    width: 6rem;
+}
+
+/* remove top gap for summary area */
+
+
 .details .details-container .details-controls .details-prepTime {
-    margin-bottom: 2rem;
     display: flex;
-    justify-content: flex-start;
-    width: 15rem;
+    align-items: center;
+    
 }
 .details .details-container .details-controls .details-prepTime .clock-icon {
     margin-right: 0.5rem;
     width: 2.5rem;
 }
+.details .details-container .details-controls .details-difficulty {
+    
+}
+
+.details .details-container .details-summary {
+    display: flex;
+    flex-direction: column;
+}
+
 .details .details-container .details-summary .details-summary-ingredients {
     all: unset;
     align-self: flex-start;
