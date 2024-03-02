@@ -13,6 +13,8 @@
     font-size: 2rem;
     background-color: #FDB234;
     color: black;
+    /* color: #FDB234; */
+    /* backdrop-filter: blur(10px); */
     border-radius: 20px;
     padding: 1rem;
     position: absolute;

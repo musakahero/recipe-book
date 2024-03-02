@@ -10,7 +10,7 @@ import { CommentSection } from '../Comment Section/CommentSection';
 export const RecipeDetails = () => {
 
     const navigate = useNavigate();
-    const {isAuthenticated, userId } = useContext(AuthContext);
+    const { isAuthenticated, userId } = useContext(AuthContext);
     const { recipeId } = useParams();
     const [details, setDetails] = useState({});
     const [comments, setComments] = useState([]);
@@ -33,21 +33,24 @@ export const RecipeDetails = () => {
         <div className={styles["details"]}>
             <div className={styles["details-container"]} >
                 <h1 className={styles["details-title"]} >{details.name}</h1>
+
+
                 <div className={styles["details-controls"]}>
-                    <div className={styles["details-prepTime"]}>
-                        <img src={clockIcon} className={styles["clock-icon"]} alt='Duration icon'/>
-                        <span>{details.prepTime}</span>
-                    </div>
                     {/* Show control buttons if user is authenticated & authorized */}
-                    <span className={styles["details-difficulty"]}>Difficulty: Medium</span>
                     {isAuthenticated() && userId === details._ownerId ?
                         <div className={styles["controls-buttons"]}>
                             <Link className={styles["details-button"]} to={`/edit/${recipeId}`}>Edit</Link>
                             <Link className={styles["details-button"]} to={`/delete/${recipeId}`} >Delete</Link>
                         </div> : null}
-                        
                 </div>
-                
+                <div className={styles["details-meta"]}>
+                    <div className={styles["details-prepTime"]}>
+                        <img src={clockIcon} className={styles["clock-icon"]} alt='Duration icon' />
+                        <span>{details.prepTime}</span>
+                    </div>
+                    <span className={styles["details-difficulty"]}>Difficulty: {details.difficulty}</span>
+                </div>
+
                 {/* Check if there's any img URL provided. If not, put a backup img div */}
                 {details.img !== '' ?
                     <div className={styles["details-img-container"]} style={{ backgroundImage: `url(${details.img})` }}>
@@ -65,7 +68,7 @@ export const RecipeDetails = () => {
             </div>
 
             {/* Display Comment section */}
-           <CommentSection comments={comments} setComments={setComments} recipeId={recipeId}/>
+            <CommentSection comments={comments} setComments={setComments} recipeId={recipeId} />
 
         </div>
     )

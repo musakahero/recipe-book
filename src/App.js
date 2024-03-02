@@ -24,8 +24,6 @@ function App() {
   const navigate = useNavigate();
   const [allRecipes, setAllRecipes] = useState([]);
   const [auth, setAuth] = useLocalStorage('auth', {});
-  // const [details, setDetails] = useState({});
-  // const [comments, setComments] = useState([]);
 
   useEffect(() => {
     recipeService.getAll()
@@ -103,7 +101,6 @@ function App() {
       //post request
       const newRecipe = await recipeService.create(formValues, auth.accessToken);
       //update allRecipes state
-      // setRecipes(state => [...state, newRecipe]);
       setAllRecipes(state => [...state, newRecipe]);
       navigate('/catalog');
 
@@ -131,7 +128,6 @@ function App() {
       const result = await recipeService.edit(formValues._id, formValues, auth.accessToken);
 
       //update Recipes state
-      // setRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
       setAllRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
       navigate(`/catalog/${formValues._id}`);
 
@@ -166,7 +162,7 @@ function App() {
     <RecipeContext.Provider value={recipeContextObj}>
       <AuthContext.Provider value={authContextObj}>
         <div className={styles["App"]}>
-          <Navbar />
+        <Navbar />
           <main className={styles["main"]}>
             <Routes>
               {/* public routes */}

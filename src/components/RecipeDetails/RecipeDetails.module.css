@@ -3,7 +3,7 @@
     /* padding: 2rem; */
     background-color: #a45bce;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 .details>div {
@@ -13,6 +13,8 @@
 
 .details .details-title {
     text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .details .details-container {
@@ -20,12 +22,12 @@
     /* background-color: #1bd152; */
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr 0.5fr 5fr auto;
+    grid-template-rows: 1fr 0.5fr 3fr auto;
     gap: 2rem;
     grid-template-areas:
-        'title title'
-        'img controls'
-        'img  summary'
+        'title controls'
+        'img details-meta'
+        'img summary'
         'steps steps';
     border-radius: 20px;
     padding-left: 9rem;
@@ -33,38 +35,44 @@
 }
 
 .details .details-container .details-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
+
 .details .details-container .details-controls .controls-buttons {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-end; */
+    align-items: flex-end;
     justify-content: center;
     padding: 0 0.5rem 0 0.5rem;
     text-align: center;
 }
+
 .details .details-container .details-controls .controls-buttons>a {
     /* margin-left: 0.5rem; */
     width: 6rem;
 }
 
-/* remove top gap for summary area */
+.details .details-container .details-meta {
+    display: flex;
+    justify-content: center;
+    /* align-items: ; */
+    flex-direction: column;
+    gap: 1rem;
+}
 
-
-.details .details-container .details-controls .details-prepTime {
+.details .details-container .details-meta .details-prepTime {
     display: flex;
     align-items: center;
-    
+
 }
-.details .details-container .details-controls .details-prepTime .clock-icon {
+
+.details .details-container .details-meta .details-prepTime .clock-icon {
     margin-right: 0.5rem;
     width: 2.5rem;
 }
-.details .details-container .details-controls .details-difficulty {
-    
-}
+
+.details .details-container .details-meta .details-difficulty {}
 
 .details .details-container .details-summary {
     display: flex;
@@ -72,32 +80,43 @@
 }
 
 .details .details-container .details-summary .details-summary-ingredients {
-    all: unset;
-    align-self: flex-start;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 360px;
+    max-width: 400px;
 }
+
 .details .details-container .details-summary .details-summary-ingredients li {
     margin-left: 1.5rem;
     list-style: circle;
     font-weight: lighter;
 }
+
 .details .details-container .details-steps {
     /* word-break: break-all; */
     word-break: break-word;
     background-color: #fdc15c;
     padding: 1rem;
     font-weight: lighter;
+    width: 90%;
+    margin: auto;
 }
 
 /* Recipe image styling */
 .details-img-container {
-    margin: 0rem 6rem 0rem 0rem;
-    grid-area: img;
-    background-size:cover;
+    /* margin: 0rem 6rem 0rem 0rem; */
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: cover;
     aspect-ratio: 1/1;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     border-radius: 20px 20px 20px 20px;
 }
+
 .details-img-container-backup {
     background-image: url('../../images/missing-photo.jpg');
     /* background-size:500px 500px; */
@@ -105,9 +124,11 @@
     background-color: white;
     background-position: center;
     aspect-ratio: 1/1;
-    grid-area: img;
     border-radius: 20px 20px 20px 20px;
-    margin: 0rem 6rem 0rem 0rem;
+    /* margin: 0rem 6rem 0rem 0rem; */
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Links styling */
@@ -121,6 +142,7 @@
     cursor: pointer;
     border: 1px solid #b234fd;
 }
+
 .details-button:hover {
     background-color: #feb8ad;
     color: black;
@@ -130,15 +152,26 @@
 .details .details-title {
     grid-area: title;
 }
+
 .details .details-controls {
     grid-area: controls;
 }
+
+.details .details-container .details-meta {
+    grid-area: details-meta;
+}
+
 .details .details-img-container {
     grid-area: img;
 }
+.details-img-container-backup {
+    grid-area: img;
+}
+
 .details .details-summary {
     grid-area: summary;
 }
+
 .details .details-steps {
     grid-area: steps;
 }

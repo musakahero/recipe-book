@@ -17,6 +17,7 @@ export const Edit = () => {
         _id: '',
         name: '',
         img: '',
+        difficulty: '',
         prepTime: '',
         ingredients: '',
         steps: ''
@@ -50,6 +51,9 @@ export const Edit = () => {
 
                 <label htmlFor="img">Recipe photo</label>
                 <input className={styles["edit-img"]} name="img" type="url" onChange={onChangeHandler} value={formValues.img} />
+
+                <label htmlFor="difficulty">Difficulty*</label>
+                <input className={styles["edit-difficulty"]} name="difficulty" type="text" onChange={onChangeHandler} value={formValues.difficulty} required />
 
                 <label htmlFor="prepTime">Preparation time*</label>
                 <input className={styles["edit-prep-time"]} name="prepTime" type="text" onChange={onChangeHandler} value={formValues.prepTime} required />

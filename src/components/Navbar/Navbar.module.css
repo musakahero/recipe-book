@@ -3,65 +3,42 @@
      yellow: #F5CD56;
 */
 .nav {
-    position: fixed;
-    top: 0;
+    /* position: fixed; */
+    /* top: 0; */
+    /* width: 100%; */
+    user-select: none;
     background-color: #a45bce;
     color: white;
-    box-shadow: 0px 10px 7px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 10px 7px 0px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 8vh;
-    width: 100vw;
-    
+    min-height: 42px;
 }
+
 .nav .logo {
     padding: 0rem 2rem;
+    min-height: 21px;
 }
-.nav ul {
-    list-style: none;
+
+.nav .logo:hover {
+    color: #fdc734;
 }
 
 .nav .menu {
     display: flex;
-    line-height: 2.1;
-    justify-content: flex-end;
     text-align: center;
-    align-items: center;
+    justify-content: flex-end;
     margin: 0rem 2rem;
 }
 
-.nav .menu li {    
-    /* Let all the flexible items be the same length, regardless of its content */
-    position: relative;
+.nav .menu .nav-item {
     padding: 0rem 1rem;
-    /* width: 100%; */
+}
+.nav .menu li {
     cursor: pointer;
 }
-
-/* .nav .menu  .userPanel .userPanel-dropdown {
-    position: absolute;
-    top: 3.40rem;
-    left: 0rem;
-    background-color: #a45bce;
-    box-shadow: 0px 10px 7px 0px rgba(0,0,0,0.1);
-    width: 100%;
-    padding: 0rem;
-    display: flex;
-    flex-direction: column;
-} */
-
-.nav .menu .userPanel-dropdown:focus-visible {
-    transition: 400ms;
-}
-
-
-.nav .menu .userPanel-content {
-    padding: 0 1rem;
-    margin: 0.2rem;
-}
-
-
 
 .nav li:hover {
     background-color: #fdc734;

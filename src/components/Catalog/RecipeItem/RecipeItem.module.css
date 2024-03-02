@@ -9,6 +9,7 @@
     grid-template-areas:
         "img ."
         "img ."
+        "img ."
         "img .";
     transition: 0.1s ease-in;
     overflow: hidden;
@@ -42,6 +43,12 @@
 .recipe-item .item-name {
     font-size: 1em;
     overflow:hidden;
+}
+
+.recipe-item .item-difficulty {
+    font-size: 0.7em;
+    overflow:hidden;
+
 }
 
 .recipe-item .item-element:not(.item-name) {

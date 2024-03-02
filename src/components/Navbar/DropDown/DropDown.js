@@ -10,11 +10,15 @@ export const DropDown = ({dropdownRef, userPanelClicked, setUserPanelClicked}) =
     return (
         <ul 
         onClick={() => setUserPanelClicked(!userPanelClicked)}
-        ref={dropdownRef} className={styles["dropdown-container"]} >
+        ref={dropdownRef} id={styles["dropdown"]} className={styles["dropdown-container"]} >
             <Link 
-            className={styles["dropdown-link"]} to={`/profile/${userId}`}><li>My Profile</li></Link>
+            className={styles["dropdown-link"]} to={`/profile/${userId}`}>
+                <li>My Profile</li>
+                </Link>
             <Link 
-            className={styles["dropdown-link"]} to="/logout"><li>Log Out</li></Link>
+            className={styles["dropdown-link"]} to="/logout">
+                <li>Log Out</li>
+                </Link>
         </ul>
     )
 };

@@ -10,6 +10,7 @@ export const Create = () => {
     const { formValues, onChangeHandler, onSubmit } = useForm({
         name: '',
         img: '',
+        difficulty: '',
         prepTime: '',
         ingredients: [],
         steps: ''
@@ -26,6 +27,9 @@ export const Create = () => {
 
                 <label htmlFor="img">Recipe photo</label>
                 <input className={styles["create-img"]} name="img" type="url" onChange={onChangeHandler} value={formValues.img} />
+
+                <label htmlFor="difficulty">Difficulty*</label>
+                <input className={styles["create-difficulty"]} name="difficulty" type="text" onChange={onChangeHandler} value={formValues.difficulty} required/>
 
                 <label htmlFor="prepTime">Preparation time*</label>
                 <input className={styles["create-prep-time"]} name="prepTime" type="text" onChange={onChangeHandler} value={formValues.prepTime} required/>

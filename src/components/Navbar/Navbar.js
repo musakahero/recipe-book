@@ -44,7 +44,9 @@ export const Navbar = () => {
     return (
         <nav className={styles["nav"]}>
             <Link to="/">
-                <span className={styles["logo"]}><FontAwesomeIcon icon={faKitchenSet} style={{ fontSize: '3rem' }} /></span>
+                <span className={styles["logo"]}>
+                    <FontAwesomeIcon 
+                    icon={faKitchenSet}/> CookBook</span>
             </Link>
             <ul className={styles["menu"]}>
                 <NavLink to="/catalog" style={activeStyle}>
@@ -56,11 +58,11 @@ export const Navbar = () => {
                     (<>
                         <NavLink to="/create"
                             style={activeStyle}>
-                            <li className={styles["nav-item"]}>Add new recipe</li>
+                            <li className={styles["nav-item"]}>Add recipe</li>
                         </NavLink>
-                        <li
+                        <a><li className={styles["nav-item"]}
                             ref={toggleDropdownRef}
-                            onClick={() => setUserPanelClicked(!userPanelClicked)}>Welcome, {username}</li>
+                            onClick={() => setUserPanelClicked(!userPanelClicked)}>Welcome, {username}</li></a>
                         {
                             userPanelClicked
                             && (<DropDown
