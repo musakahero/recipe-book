@@ -3,9 +3,6 @@
      yellow: #F5CD56;
 */
 .nav {
-    /* position: fixed; */
-    /* top: 0; */
-    /* width: 100%; */
     user-select: none;
     background-color: #a45bce;
     color: white;
@@ -24,6 +21,7 @@
 
 .nav .logo:hover {
     color: #fdc734;
+    transition: 800ms;
 }
 
 .nav .menu {
