@@ -1,0 +1,30 @@
+.form {
+    /* padding: 1rem 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.form textarea {
+    font-size: 0.8em;
+    font-weight: 200;
+    width: 40svh;
+}
+
+.form input {
+    border-radius: 40px;
+    padding: 0px 20px;
+    font-weight: 200;
+    width: 36svh;
+}
+.form .difficulty {
+    width: 25svh;
+    text-align: center;
+}
+.form .prep-time {
+    width: 12svh;
+    text-align: center;
+}

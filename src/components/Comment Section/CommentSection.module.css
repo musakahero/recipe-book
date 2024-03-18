@@ -1,16 +1,41 @@
 /* Comment section styling */
 .comments-container {
-    background-color: #efd6fe;
+    margin: 2rem 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, 42rem);
     gap: 1rem;
-    border-radius: 20px;
+    overflow: visible;
+    justify-content: center; 
+}
+.comments-container .no-comments {
+    text-align: center;
 }
 
 .comment-form {
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
-    padding: 0rem 5rem 2rem 5rem;
+    gap: 1rem;
+    padding: 1rem 5rem;
     justify-content: flex-start;
     align-items: center;
+    background-color: #3A7CA5 ;
+    width: 30rem;
+    margin: auto;
+    border-radius: 8px;
+
+}
+
+.comment-form textarea {
+    padding: 0.5rem 0.7rem;
+    font-weight: lighter;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 802px) {
+    .comments-container {
+        display: grid;
+    grid-template-columns: auto;
+    overflow: auto;
+    }
 }

@@ -1,9 +1,12 @@
 .comment-container {
-    background-color: #fdb234;
+    width: 90%;
+    margin: auto;
+    background-color: #3A7CA5;
+    color: whitesmoke;
     padding: 1rem;
-    border-radius: 20px;
+    border-radius: 8px;
     display: grid;
-    grid-template-columns: 3fr auto;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: auto 3fr;
     grid-template-areas:
         'owner owner'
@@ -12,13 +15,15 @@
 
 .comment-container .comment-body {
     display: flex;
-    justify-content: space-between;
 }
 
 .comment-container .comment-body .comment-content {
-    background-color: #fdc15c;
-    width: 100%;
-    padding: 0.5rem 1rem;
+    font-weight: lighter;
+    word-wrap: break-word;
+    background-color: #c5e4f8;
+    color: black;
+    width: 79%;
+    padding: 0.5rem 0.5rem;
     margin-right: 1rem;
 }
 
@@ -35,6 +40,8 @@
 
 .comment-body textarea {
     padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    font-weight: lighter;
 }
 
 .comment-button {
@@ -44,7 +51,6 @@
     padding: 4px 12px;
     border-radius: 2px;
     color: black;
-    /* justify-self: center; */
     cursor: pointer;
     list-style-type: none;
     text-align: center;
@@ -66,4 +72,11 @@
 
 .comment-body {
     grid-area: body;
+}
+
+@media screen and (max-width: 802px) {
+    .comment-container {
+        width:90%;
+        margin: auto;
+    }
 }

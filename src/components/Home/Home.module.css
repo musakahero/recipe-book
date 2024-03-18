@@ -1,29 +1,39 @@
-
 .home-img-container {
-    height: 100%;
-    max-width: 100vw;
+    min-height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 40% 40%;
     background-image: url('../../images/cooking.jpg');
     display: flex;
+    background-position-y: 45%;
+    transform: translate(0%, 90%);
+    transition-duration: 1s;
 }
 
 .home-start-btn {
     font-size: 2rem;
-    background-color: #FDB234;
-    color: black;
-    /* color: #FDB234; */
+    background-color: #3fb472 ;
+    /* background-color: #FCB746 ; */
     /* backdrop-filter: blur(10px); */
+    /* color: rgb(32, 32, 32); */
+    color: white;
+    /* font-size: 48px; */
     border-radius: 20px;
     padding: 1rem;
     position: absolute;
     top: 42vh;
     right: 10rem;
-    flex-shrink: 3;
 }
 
 .home-start-btn:hover {
-    background-color: #f3dc99;
+    /* background-color: #f3dc99; */
     scale: 1.1;
+    transition-duration: 0.7s;
+}
+
+@media screen and (max-width: 802px) {
+    .home-start-btn {
+        /* right: 30px; */
+
+    }
 }

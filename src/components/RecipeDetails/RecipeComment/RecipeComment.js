@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
 import * as commentService from '../../../services/commentService';
 import { useForm } from '../../../hooks/useForm';
+import { Button } from '../../Button/Button';
 
 export const RecipeComment = ({ _ownerId, content, username, _id, setComments, recipeId }) => {
     const navigate = useNavigate();
@@ -43,25 +44,15 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
 
     return (
         <div className={styles["comment-container"]}>
-            {/* <ul className={styles["comment-controls"]}>
-                {userId === _ownerId &&
-                    <>
-                        <li onClick={onEditClick} className={styles["comment-button"]}>Edit</li>
-                        <li onClick={onDeleteClick} className={styles["comment-button"]}>Delete</li>
-                    </>}
-            </ul> */}
-            {/* open form if Edit is clicked */}
             {isEdited ?
                 <>
                     <label htmlFor="content" className={styles["comment-owner"]}>Edit comment: </label>
                     <form method='post' onSubmit={onSubmit} className={styles['comment-body']}>
                         <textarea name="content" cols={29} rows={2} value={formValues.content} onChange={onChangeHandler} />
                         <div className={styles['comment-controls']}>
-                            <button type='submit' className={`${styles["comment-button"]} ${styles["save-btn"]}`}>Save</button>
-
-                            <button type="button" onClick={onDeleteClick} className={styles["comment-button"]}>Delete</button>
-
-                            <button type='button' className={`${styles["comment-button"]} ${styles["discard-btn"]}`} onClick={() => setIsEdited(false)}>Cancel</button>
+                            <Button type={'submit'} content={'Save'}/>
+                            <Button type={'button'} onClickHandler={onDeleteClick} content={'Delete'}/>
+                            <Button type={'button'} onClickHandler={() => setIsEdited(false)} content={'Cancel'}/>
                         </div>
                     </form>
                 </>
@@ -72,8 +63,8 @@ export const RecipeComment = ({ _ownerId, content, username, _id, setComments, r
                         <div className={styles["comment-controls"]}>
                             {userId === _ownerId &&
                                 <>
-                                    <button type="button" onClick={onEditClick} className={styles["comment-button"]}>Edit</button>
-                                    <button type="button" onClick={onDeleteClick} className={styles["comment-button"]}>Delete</button>
+                                    <Button type={'button'} onClickHandler={onEditClick} content={'Edit'}/>
+                                    <Button type={'button'} onClickHandler={onDeleteClick} content={'Delete'}/>
                                 </>}
                         </div>
                     </div>

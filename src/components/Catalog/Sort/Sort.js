@@ -2,7 +2,7 @@ import styles from "./Sort.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
 
-export const Sort = ({ setSelectedSort, selectedSort, icon }) => {
+export const Sort = ({ setSelectedSort, selectedSort }) => {
     const handleDropdownChange = (e) => {
         setSelectedSort(e.target.value);
     };

@@ -92,7 +92,11 @@ function App() {
           throw Error('All mandatory fields must be filled.');
         }
       };
-
+      //add backup img if user did not provide one
+      if (formValues.img == false) {
+        formValues.img = 
+        'https://st3.depositphotos.com/23594922/31822/v/450/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg';
+      } 
       //split ingredients and remove whitespaces 
       formValues.ingredients = formValues.ingredients.split(',')
         .map(x => x.trim())
@@ -162,7 +166,7 @@ function App() {
     <RecipeContext.Provider value={recipeContextObj}>
       <AuthContext.Provider value={authContextObj}>
         <div className={styles["App"]}>
-        <Navbar />
+          <Navbar />
           <main className={styles["main"]}>
             <Routes>
               {/* public routes */}
@@ -186,7 +190,7 @@ function App() {
                 </>}
               {/* Edge cases */}
               <Route path='*' element={<div><h1>404</h1><h2>Page not found</h2></div>} />
-              <Route path='/nodata' element={<div><h1>Server error</h1><h2>The data is currently unavailable. We are sorry for the inconvenience!</h2></div>} />
+              <Route path='/nodata' element={<div><h1>Server error</h1><h2>The data is currently unavailable. Sorry for the inconvenience!</h2></div>} />
               <Route path='/unauthorized' element={<div><h1>Unauthorized</h1><h2>You do not have access to this page.</h2></div>} />
             </Routes>
           </main>

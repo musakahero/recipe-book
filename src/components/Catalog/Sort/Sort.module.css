@@ -1,17 +1,31 @@
 .sort-container {
+    /* background-color: green; */
     display: flex;
     align-items: center;
     gap: 8px;
-    /* padding-right: 30px; */
-    padding: 18px 30px 18px 0;
+    padding: 18px 30px 18px 30px;
 
 }
 
 .sort-select {
+    /* background-color: #3fb472; */
+    /* color: whitesmoke; */
     border: 1px solid grey;
     border-radius: 8px;
     font-size: 1.5rem;
     text-align: center;
     padding: 0.5rem 0rem 0.5rem 0.5rem;
-    
+}
+
+select option:checked {
+    /* background: linear-gradient(#d6d6d6, #d6d6d6); */
+    background-color: #3fb472;
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 850px) {
+    .sort-select {
+        padding: 6px 0 6px 0;
+        width: 5rem;
+    }
 }

@@ -3,22 +3,39 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.catalog-title {
+.catalog .catalog-title {
     padding: 22px;
     text-align: center;
     font-size: 36px;
 }
 
-.catalog-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 30px;
-    gap: 30px;
-    color: black;
-}
-
-.catalog-search-sort-container {
+.catalog .catalog-search-sort-container {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+}
+
+.catalog .catalog-container {
+    overflow: visible;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 24rem);
+    padding: 30px;
+    gap: 30px;
+    color: rgb(32, 32, 32);
+}
+
+@media screen and (max-width: 802px) {
+    .catalog .catalog-container {
+        grid-template-columns: repeat(auto-fit, 18rem);
+    }
+}
+
+@media screen and (max-width: 676px) {
+    .catalog .catalog-container {
+        grid-template-columns: repeat(auto-fit, 15rem);
+        gap: 8px;
+        padding: 18px 0px;
+    
+    }
 }

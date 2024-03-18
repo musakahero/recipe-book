@@ -1,16 +1,40 @@
 .profile-container {
-    margin: 3rem;
-    /* background-color: rgb(87, 1, 87); */
-    background-color: #efd6fe;
+    height: 100%;
+    background-color: #f8d7a1;
+    background-image: linear-gradient(180deg, #f8d7a1 60%, #ff9a88 100%);
+
     color: black;
-    font-size: 18px;
     text-align: center;
     border-radius: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.profile-container>h1 {
+    font-size: 36px;
+    margin: 22px;
 }
 
 .catalog .catalog-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 24rem);
     padding: 30px;
     gap: 30px;
+    color: rgb(32, 32, 32);
+}
+
+@media screen and (max-width: 802px) {
+    .catalog .catalog-container {
+        grid-template-columns: repeat(auto-fit, 18rem);
+    }
+}
+
+@media screen and (max-width: 676px) {
+    .catalog .catalog-container {
+        grid-template-columns: repeat(auto-fit, 15rem);
+        gap: 8px;
+        padding: 18px 0px;
+    
+    }
 }

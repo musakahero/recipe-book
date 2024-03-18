@@ -6,11 +6,10 @@ export const DropDown = ({dropdownRef, userPanelClicked, setUserPanelClicked}) =
 
     const { userId } = useContext(AuthContext);
 
-
     return (
         <ul 
         onClick={() => setUserPanelClicked(!userPanelClicked)}
-        ref={dropdownRef} id={styles["dropdown"]} className={styles["dropdown-container"]} >
+        ref={dropdownRef} className={styles["dropdown-container"]} >
             <Link 
             className={styles["dropdown-link"]} to={`/profile/${userId}`}>
                 <li>My Profile</li>

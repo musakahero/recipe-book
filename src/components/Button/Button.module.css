@@ -1,10 +1,11 @@
 .button{
     all:unset;
-    background-color: #FDB234;
+    background-color: #3fb472;
     margin: 5px 0;
     padding: 4px 12px;
     border-radius: 2px;
-    color: black;
+    border-radius: 8px;
+    color: whitesmoke;
     grid-area: submit;
     justify-self: center;
     cursor: pointer;
@@ -12,5 +13,5 @@
 }
 
 .button:hover {
-    background-color: #fdc15c;
+    background-color: #fd927f ;
 }

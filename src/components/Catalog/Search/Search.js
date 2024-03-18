@@ -20,7 +20,7 @@ export const Search = ({ placeholder, onSearchSubmit, onResetSubmit }) => {
                     value={formValues.searchString}
                     onChange={onChangeHandler} />
                 <Button content="Search" type={"submit"} />
-                <Button content="Reset" type={"button"} 
+                <Button content="Cancel" type={"button"} 
                 onClickHandler={
                     () => {
                         onResetSubmit();

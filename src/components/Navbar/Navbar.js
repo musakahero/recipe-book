@@ -5,13 +5,14 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKitchenSet } from '@fortawesome/free-solid-svg-icons';
 import { DropDown } from "./DropDown/DropDown";
+import { useTrans } from "../../hooks/useTrans";
 
 export const Navbar = () => {
     //style to apply for active tabs
     const activeStyle = ({ isActive }) => {
         return {
-            backgroundColor: isActive ? "#fdc734" : "",
-            color: isActive ? "black" : "white"
+            backgroundColor: isActive ? "#3fb472" : "",
+            // color: isActive ?  "white" : "black"
         };
     };
 
@@ -19,6 +20,7 @@ export const Navbar = () => {
     const { isAuthenticated, username } = useContext(AuthContext);
     const toggleDropdownRef = useRef(null);
     const dropdownRef = useRef(null);
+    const { mounted } = useTrans(false);
 
 
     useEffect(() => {
@@ -42,45 +44,54 @@ export const Navbar = () => {
 
 
     return (
-        <nav className={styles["nav"]}>
-            <Link to="/">
-                <span className={styles["logo"]}>
-                    <FontAwesomeIcon 
-                    icon={faKitchenSet}/> CookBook</span>
-            </Link>
-            <ul className={styles["menu"]}>
-                <NavLink to="/catalog" style={activeStyle}>
-                    <li className={styles["nav-item"]}>All recipes</li>
-                </NavLink>
+        <>
+            <nav className={styles["nav"]}
+                style={mounted ?
+                    {
+                        transform: 'translate(0%, 0%)'
+                    } : null
+                }
+            >
+                <Link to="/">
+                    <div className={styles["logo"]}>
+                        <FontAwesomeIcon
+                            icon={faKitchenSet} /> CookBook</div>
+                </Link>
+                <ul className={styles["menu"]}>
+                    <NavLink to="/catalog" style={activeStyle}>
+                        <li className={styles["nav-item"]}>All recipes</li>
+                    </NavLink>
 
-                {/* Check if authenticated, private side */}
-                {isAuthenticated() ?
-                    (<>
-                        <NavLink to="/create"
-                            style={activeStyle}>
-                            <li className={styles["nav-item"]}>Add recipe</li>
-                        </NavLink>
-                        <a><li className={styles["nav-item"]}
-                            ref={toggleDropdownRef}
-                            onClick={() => setUserPanelClicked(!userPanelClicked)}>Welcome, {username}</li></a>
-                        {
-                            userPanelClicked
-                            && (<DropDown
-                                dropdownRef={dropdownRef}
-                                userPanelClicked={userPanelClicked}
-                                setUserPanelClicked={setUserPanelClicked} />)
-                        }
-                    </>)
-                    : (<>
-                        <NavLink to="/login"
-                            style={activeStyle}
-                        ><li className={styles["nav-item"]}>Login</li></NavLink>
-                        <NavLink to="/register"
-                            style={activeStyle}
-                        ><li className={styles["nav-item"]}>Register</li></NavLink>
-                    </>)}
-            </ul>
-        </nav>
+                    {/* Check if authenticated, private side */}
+                    {isAuthenticated() ?
+                        (<>
+                            <NavLink to="/create"
+                                style={activeStyle}>
+                                <li className={styles["nav-item"]}>Add recipe</li>
+                            </NavLink>
+                            <a><li className={`${styles["nav-item"]} ${styles["dropdown-open"]}`}
+                                ref={toggleDropdownRef}
+                                onClick={() => setUserPanelClicked(!userPanelClicked)}>Hello, {username}</li></a>
+                        </>)
+                        : (<>
+                            <NavLink to="/login"
+                                style={activeStyle}
+                            ><li className={styles["nav-item"]}>Login</li></NavLink>
+                            <NavLink to="/register"
+                                style={activeStyle}
+                            ><li className={styles["nav-item"]}>Register</li></NavLink>
+                        </>)}
+                </ul>
+                {
+                    userPanelClicked
+                    && (<DropDown
+                        dropdownRef={dropdownRef}
+                        userPanelClicked={userPanelClicked}
+                        setUserPanelClicked={setUserPanelClicked} />)
+                }
+            </nav>
+
+        </>
     );
 };
 

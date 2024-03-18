@@ -4,6 +4,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  overflow: hidden;
 }
 
 /* Remove default margin */

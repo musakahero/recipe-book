@@ -4,8 +4,8 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import * as recipeService from '../../services/recipeService';
 import { RecipeContext } from "../../contexts/RecipeContext";
-import { Button } from '../Button/Button';
 import { AuthContext } from '../../contexts/AuthContext';
+import { Form } from '../Form/Form';
 
 export const Edit = () => {
     const { recipeId } = useParams();
@@ -43,8 +43,7 @@ export const Edit = () => {
     return (
         <div className={styles["edit-container"]}>
             <h1 className={styles["edit-title"]}>Edit recipe</h1>
-
-            <form className={styles["edit-form"]} method="post" onSubmit={onSubmit}>
+            {/* <form className={styles["edit-form"]} method="post" onSubmit={onSubmit}>
 
                 <label htmlFor="name">Recipe name*</label>
                 <input className={styles["edit-name"]} name="name" type="text" onChange={onChangeHandler} value={formValues.name} required />
@@ -55,7 +54,7 @@ export const Edit = () => {
                 <label htmlFor="difficulty">Difficulty*</label>
                 <input className={styles["edit-difficulty"]} name="difficulty" type="text" onChange={onChangeHandler} value={formValues.difficulty} required />
 
-                <label htmlFor="prepTime">Preparation time*</label>
+                <label htmlFor="prepTime">Preparation time (minutes)*</label>
                 <input className={styles["edit-prep-time"]} name="prepTime" type="text" onChange={onChangeHandler} value={formValues.prepTime} required />
 
                 <label className={styles["ingredients-label"]} htmlFor="ingredients">Ingredients (separated by comma)*</label>
@@ -65,7 +64,12 @@ export const Edit = () => {
                 <textarea className={styles["edit-steps"]} rows={10} cols={40} name="steps" type="text" onChange={onChangeHandler} value={formValues.steps} required />
 
                 <Button type={"submit"} content={"Edit recipe"} />
-            </form>
+            </form> */}
+            <Form 
+            onSubmit={onSubmit} 
+            onChangeHandler={onChangeHandler} 
+            formValues={formValues}
+            buttonSubmitContent={'Save changes'}/>
         </div>
     )
 }

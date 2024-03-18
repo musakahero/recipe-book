@@ -1,22 +1,29 @@
+a {
+    overflow: visible;
+}
+
 .recipe-item {
-    background-color: #FDB234;
-    /* background-color: #306DBE; */
+    background-color: #fd927f;
+    color: rgb(32, 32, 32);
     border-radius: 20px;
     display: grid;
+    max-width: 30rem;
     height: 22rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr repeat(3, 1fr);
     grid-template-areas:
         "img ."
         "img ."
         "img ."
         "img .";
     transition: 0.1s ease-in;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* hover animation */
 .recipe-item:hover {
+    background-color: #3fb472;
+    color: whitesmoke;
     transform: scale(1.09) rotate(2deg);
     box-shadow: 0px 0px 20px rgba(0, 0, 0.5);
     cursor: pointer;
@@ -29,34 +36,48 @@
     background-position: center;
     border-radius: 20px 0px 0px 20px;
 }
-/* displayed if author did not provide an img */
-.recipe-item .img-container-backup {
-    background-image: url('../../../images/missing-photo.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: white;
-    background-position: center;
-    grid-area: img;
-    border-radius: 20px 0px 0px 20px;
-}
 
-.recipe-item .item-name {
-    font-size: 1em;
-    overflow:hidden;
-}
-
-.recipe-item .item-difficulty {
-    font-size: 0.7em;
-    overflow:hidden;
-
-}
-
-.recipe-item .item-element:not(.item-name) {
-    font-size: 0.7em;
+.recipe-item p.item-name {
+    font-size: 1.5rem;
 }
 
 .recipe-item p {
+    text-overflow: ellipsis;
+    /* color: black; */
+    font-size: 1.2rem;
     padding: 20px;
-    color: black;
     text-align: center;
+}
+
+@media screen and (max-width: 802px) {
+
+    .recipe-item {
+        max-width: 20rem;
+        height: 18rem;
+
+    }
+    .recipe-item p.item-name {
+        font-size: 1.2rem;
+    }
+
+    .recipe-item p {
+        font-size: 1.0rem;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 676px) {
+    .recipe-item {
+        max-width: 20rem;
+        height: 15rem;
+
+    }
+    .recipe-item p.item-name {
+        font-size: 0.9rem;
+    }
+
+    .recipe-item p {
+        font-size: 0.8rem;
+        padding: 20px;
+    }
 }
