@@ -6,4 +6,4 @@ export const login = (data) => request.post(`${baseUrl}/login`, data);
 
 export const register = (data) => request.post(`${baseUrl}/register`, data);
 
-export const logout = (token, isLogout) => request.get(`${baseUrl}/logout`,null, token, isLogout);
+export const logout = (token, isLogout) => request.get(`${baseUrl}/logout`, null, token, isLogout);

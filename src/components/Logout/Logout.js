@@ -6,6 +6,7 @@ export const Logout = () => {
     const { onLogoutClick, token } = useContext(AuthContext);
     
     useEffect( () => {
+        console.log('token provided is ', token);
         onLogoutClick(token);
     }, [onLogoutClick, token]);
     

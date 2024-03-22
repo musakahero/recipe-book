@@ -78,9 +78,10 @@ function App() {
       //Reset the Auth state
       setAuth({});
       //clear local Storage
-      localStorage.clear();
+      // localStorage.clear(); probably don't need?
     } catch (err) {
       alert(err.message);
+      setAuth({});
     }
   };
   //Recipe CRUD/Search handlers
@@ -145,8 +146,8 @@ function App() {
     onLoginSubmit,
     onRegisterSubmit,
     userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
+    token: auth.accessToke,
+    userEmail: auth.emai,
     username: auth.username,
     isAuthenticated() {
       return !!auth.accessToken
