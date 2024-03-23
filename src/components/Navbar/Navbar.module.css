@@ -16,6 +16,7 @@
     justify-content: space-between;
     align-items: center;
     min-height: 4rem;
+    /* min-width: 30rem; */
     background-position-y: 23%;
     transform: translate(0%, -90%);
     transition-duration: 1.5s;
@@ -78,5 +79,28 @@
     .nav .menu {
         margin: 0 auto;
         grid-area: menu-area;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .nav {
+       grid-template-columns: 1fr 1fr;
+       grid-template-rows: auto;
+       grid-template-areas: 
+       'logo menu-area'
+       'logo dropdown'
+
+    }
+
+    .nav>a {
+        
+
+    }
+
+    .nav .menu {
+        flex-direction: column;
+    }
+    .nav .dropdown {
+
     }
 }

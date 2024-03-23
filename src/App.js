@@ -36,6 +36,12 @@ function App() {
       });
   }, []);
 
+  const errorHandler = (result) => {
+    setAuth({});
+    navigate('/login');
+    throw result.error;
+  }
+
   //Operation handlers
   //Auth handlers
   const onLoginSubmit = async (formValues) => {
@@ -77,8 +83,6 @@ function App() {
       await authService.logout(token, true);
       //Reset the Auth state
       setAuth({});
-      //clear local Storage
-      // localStorage.clear(); probably don't need?
     } catch (err) {
       alert(err.message);
       setAuth({});
@@ -95,9 +99,9 @@ function App() {
       };
       //add backup img if user did not provide one
       if (formValues.img == false) {
-        formValues.img = 
-        'https://st3.depositphotos.com/23594922/31822/v/450/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg';
-      } 
+        formValues.img =
+          'https://st3.depositphotos.com/23594922/31822/v/450/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg';
+      }
       //split ingredients and remove whitespaces 
       formValues.ingredients = formValues.ingredients.split(',')
         .map(x => x.trim())
@@ -132,9 +136,14 @@ function App() {
       //put request
       const result = await recipeService.edit(formValues._id, formValues, auth.accessToken);
 
-      //update Recipes state
-      setAllRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
-      navigate(`/catalog/${formValues._id}`);
+      //check if result has an error and handle it
+      if (result.hasOwnProperty('error')) {
+        errorHandler(result);
+      } else {
+        //update Recipes state
+        setAllRecipes(state => [...state.filter(x => x._id !== formValues._id), result]);
+        navigate(`/catalog/${formValues._id}`);
+      }
 
     } catch (err) {
       alert(err.message);

@@ -1,12 +1,9 @@
-import { Navigate } from "react-router-dom";
-
 export const request = async (method, url, data, token, isLogout) => {
 
     const options = {};
 
     //isLogout defines whether body is required for the GET request
     if (method !== 'GET' || isLogout) {
-        console.log('here1');
         options.method = method;
         options.headers = {};
 
@@ -30,16 +27,10 @@ export const request = async (method, url, data, token, isLogout) => {
     //return result only if response code is OK
     if (!response.ok) {
         if (response.status === 403) {
-            if(result.message === 'User session does not exist'){
-                throw Error('User session timed out. Please sign-in again!');
-            }
-            // alert('You have to sign in first!');
-            throw Error('Something went wrong!');
+            return { value: {}, error: new Error(result.message) }
         } else {
-            //thrown Error is caught in the onLoginSubmit try-catch.
-            throw Error('Something went wrong!');
-        };
-
+            throw Error(result.message);
+        }
     } else {
         console.log(response.status);
 

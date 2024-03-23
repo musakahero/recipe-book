@@ -24,8 +24,9 @@ select option:checked {
 }
 
 @media screen and (max-width: 850px) {
+    /* TODO - FIX RESPONSIVENESS OF SORT/SEARCH BAR */
     .sort-select {
-        padding: 6px 0 6px 0;
-        width: 5rem;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        width: 6rem;
     }
 }
