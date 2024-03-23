@@ -2,13 +2,13 @@ import styles from './RecipeDetails.module.css';
 import clockIcon from '../../images/clock-icon.svg';
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import * as recipeService from '../../services/recipeService'
-import * as commentService from '../../services/commentService'
+import * as recipeService from '../../services/recipeService';
+import * as commentService from '../../services/commentService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CommentSection } from '../Comment Section/CommentSection';
 import { Button } from '../Button/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 // import useSort from './../../hooks/'
 
 export const RecipeDetails = () => {

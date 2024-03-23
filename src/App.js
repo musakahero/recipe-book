@@ -28,11 +28,15 @@ function App() {
   useEffect(() => {
     recipeService.getAll()
       .then(result => {
-        setAllRecipes(result);
+        //check if error is returned
+        if (result.hasOwnProperty('error')) {
+          errorHandler(result);
+        } else {
+          setAllRecipes(result);
+        }
       })
       .catch(err => { //Handle server down situation
         navigate('/nodata');
-        setAuth({});
       });
   }, []);
 
@@ -48,10 +52,14 @@ function App() {
     try {
       //post request
       const result = await authService.login(formValues);
-
-      //update Auth state
-      setAuth(result);
-      navigate('/catalog');
+      //check if error is returned
+      if (result.hasOwnProperty('error')) {
+        errorHandler(result);
+      } else {
+        //update Auth state
+        setAuth(result);
+        navigate('/catalog');
+      }
 
     } catch (err) {
       alert(err.message);
@@ -68,9 +76,14 @@ function App() {
       };
       //post request
       const result = await authService.register(registerData);
-      //update Auth state
-      setAuth(result);
-      navigate('/catalog');
+      //check if error is returned
+      if (result.hasOwnProperty('error')) {
+        errorHandler(result);
+      } else {
+        //update Auth state
+        setAuth(result);
+        navigate('/catalog');
+      }
 
     } catch (err) {
       alert(err.message);
@@ -106,13 +119,17 @@ function App() {
       formValues.ingredients = formValues.ingredients.split(',')
         .map(x => x.trim())
         .filter(x => x != false);
-
       //post request
       const newRecipe = await recipeService.create(formValues, auth.accessToken);
-      //update allRecipes state
-      setAllRecipes(state => [...state, newRecipe]);
-      navigate('/catalog');
 
+      //check if error is returned
+      if (newRecipe.hasOwnProperty('error')) {
+        errorHandler(newRecipe);
+      } else {
+        //update allRecipes state
+        setAllRecipes(state => [...state, newRecipe]);
+        navigate('/catalog');
+      };
     } catch (err) {
       alert(err.message);
     }
@@ -155,8 +172,8 @@ function App() {
     onLoginSubmit,
     onRegisterSubmit,
     userId: auth._id,
-    token: auth.accessToke,
-    userEmail: auth.emai,
+    token: auth.accessToken,
+    userEmail: auth.email,
     username: auth.username,
     isAuthenticated() {
       return !!auth.accessToken
